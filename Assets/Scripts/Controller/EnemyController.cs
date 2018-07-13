@@ -56,7 +56,6 @@ namespace Assets.Scripts.Interface
                 }
             }
         }
-
         // Use this for initialization
         void Start()
         {
