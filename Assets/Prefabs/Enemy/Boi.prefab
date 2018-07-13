@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4622708521820028}
   - component: {fileID: 65742649764521558}
   - component: {fileID: 114278366273731856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegHitBox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4961952284129382}
   - component: {fileID: 65534096593061550}
   - component: {fileID: 114784083734404480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4611793105019804}
   - component: {fileID: 65364527233420708}
   - component: {fileID: 114341110349047834}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TorsoHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4308494478214482}
   - component: {fileID: 65739043562740668}
   - component: {fileID: 114135293699649176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HeadHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 95970612782846690}
   - component: {fileID: 114526239908053560}
   - component: {fileID: 114331766923958386}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4635593333750584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 4620751648932616}
   - component: {fileID: 65230927877776524}
   - component: {fileID: 114394082231245682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ArmHitbox (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4325852310695334}
   - component: {fileID: 212665193142782950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 4388906714117280}
   - component: {fileID: 65544685232974488}
   - component: {fileID: 114878679409887698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LegHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

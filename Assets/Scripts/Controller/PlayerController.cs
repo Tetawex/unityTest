@@ -84,7 +84,7 @@ namespace Assets.Scripts.Controller
         }
         private void SendDrawEvent()
         {
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(Utils.GetGameController(), null, (x, y) => x.PlayerDrawed());
+            ExecuteEvents.Execute<IDrawShootMessageTarget>(Utils.getSingleton<GameController>().gameObject, null, (x, y) => x.PlayerDrawed());
         }
     }
 }

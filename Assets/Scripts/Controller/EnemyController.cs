@@ -20,7 +20,7 @@ namespace Assets.Scripts.Controller
         private float ReactionTime = 0.1f;
 
         private Animator animator;
-        private GameObject gameController;
+        private GameController gameController;
         private EnemySoundPlayer enemySoundPlayer;
 
         private bool useBrutalDeathAnimation = false;
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Controller
         {
             animator = GetComponent<Animator>();
             enemySoundPlayer = GetComponent<EnemySoundPlayer>();
-            gameController = Utils.GetGameController();
+            gameController = Utils.getSingleton<GameController>();
         }
 
         // Update is called once per frame
@@ -74,7 +74,7 @@ namespace Assets.Scripts.Controller
             if (Dead)
                 return;
             Invoke("StartDrawing", ReactionTime + Random.Range(0f, 0.1f));
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController, null, (x, y) => x.EnemyDrawed());
+            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
         }
 
         public void Shoot()
@@ -82,7 +82,7 @@ namespace Assets.Scripts.Controller
             if (Dead)
                 return;
             enemySoundPlayer.PlayShootSound();
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController, null, (x, y) => x.EnemyShotPlayer());
+            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
 
         private void StartDrawing()

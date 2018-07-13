@@ -7,6 +7,11 @@ namespace Assets.Scripts.Util
     {
         [SerializeField]
         private Vector3 direction;
+        public Vector3 Direction
+        {
+            get { return direction; }
+            set { direction = value; }
+        }
         [SerializeField]
         private float multiplier;
 

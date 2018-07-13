@@ -12,12 +12,12 @@ namespace Assets.Scripts.Controller
     {
         //[SerializeField]
         //private PlayerController playerController;
-        private GameObject gameController;
+        private GameController gameController;
 
         // Use this for initialization
         void Start()
         {
-            gameController = Utils.GetGameController();
+            gameController = Utils.getSingleton<GameController>();
         }
 
         // Update is called once per frame
@@ -28,7 +28,7 @@ namespace Assets.Scripts.Controller
 
         public void ReceiveHit()
         {
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController, null, (x, y) => x.EnemyShotPlayer());
+            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
 
     }
