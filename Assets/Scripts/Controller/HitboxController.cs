@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Scripts.Controller
 {
-    public class HitboxController : MonoBehaviour, IDamageableEntity
+    public class EnemyHitboxController : MonoBehaviour, IDamageableEntity
     {
         public BodyPart bodyPart;
 
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Controller
         private IDictionary<BodyPart, float> bodyPartMultiplierDictionary;
 
 
-        public HitboxController()
+        public EnemyHitboxController()
         {
             bodyPartMultiplierDictionary = new Dictionary<BodyPart, float>();
             bodyPartMultiplierDictionary[BodyPart.HEAD] = 2f;
