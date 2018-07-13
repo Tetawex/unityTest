@@ -6,7 +6,9 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-namespace Assets.Scripts.Interface
+using Assets.Scripts.Interface;
+
+namespace Assets.Scripts.Controller
 {
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
@@ -19,6 +21,7 @@ namespace Assets.Scripts.Interface
 
         private Animator animator;
         private GameObject gameController;
+        private EnemySoundPlayer enemySoundPlayer;
 
         private bool useBrutalDeathAnimation = false;
 
@@ -56,6 +59,7 @@ namespace Assets.Scripts.Interface
         void Start()
         {
             animator = GetComponent<Animator>();
+            enemySoundPlayer = GetComponent<EnemySoundPlayer>();
             gameController = Utils.GetGameController();
         }
 
@@ -77,13 +81,13 @@ namespace Assets.Scripts.Interface
         {
             if (Dead)
                 return;
-            shootAudioSource.Play();
+            enemySoundPlayer.PlayShootSound();
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController, null, (x, y) => x.EnemyShotPlayer());
         }
 
         private void StartDrawing()
         {
-            drawAudioSource.Play();
+            enemySoundPlayer.PlayDrawSound();
             animator.SetTrigger("Draw");
         }
 
@@ -98,12 +102,12 @@ namespace Assets.Scripts.Interface
             rotation.x = 0;
             if (!(shot.BodyPart == BodyPart.ARMORED_TORSO))
             {
-                receiveDamageAudioSource.Play();
+                enemySoundPlayer.PlayHitSound();
                 Instantiate(bloodSplatter, shot.ImpactPoint, Quaternion.Euler(rotation));
             }
             else
             {
-                bounceAudioSource.Play();
+                enemySoundPlayer.PlayBounceSound();
                 Instantiate(bounceSpark, shot.ImpactPoint, Quaternion.Euler(rotation));
             }
 
