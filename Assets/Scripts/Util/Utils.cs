@@ -19,14 +19,7 @@ namespace Assets.Scripts.Util
         {
             var type = typeof(T);
             if (!cachedSingletons.ContainsKey(type) || (UnityEngine.Object)cachedSingletons[type] == null)
-            {
-                Debug.Log("Not Cached");
                 cachedSingletons[type] = GameObject.FindObjectOfType<T>();
-            }
-            else
-            {
-                Debug.Log("Cached");
-            }
             return (T)cachedSingletons[type];
         }
     }

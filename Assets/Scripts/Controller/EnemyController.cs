@@ -13,6 +13,10 @@ namespace Assets.Scripts.Controller
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
         [SerializeField]
+        private GameObject projectilePrefab;
+        [SerializeField]
+        private Transform fireLocation;
+        [SerializeField]
         private GameObject bloodSplatter;
         [SerializeField]
         private GameObject bounceSpark;
@@ -68,6 +72,7 @@ namespace Assets.Scripts.Controller
         {
 
         }
+
         //Starts drawing after a delay
         public void Draw()
         {
@@ -82,7 +87,13 @@ namespace Assets.Scripts.Controller
             if (Dead)
                 return;
             enemySoundPlayer.PlayShootSound();
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
+
+            var player = Utils.getSingleton<PlayerController>();
+            var newShot = Instantiate(projectilePrefab).GetComponent<MoveRigidbodyTowards>();
+            newShot.transform.position = fireLocation.transform.position;
+            newShot.Direction = player.transform.position - newShot.transform.position;
+
+            //ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
 
         private void StartDrawing()
