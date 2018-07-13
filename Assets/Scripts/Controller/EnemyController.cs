@@ -10,23 +10,19 @@ namespace Assets.Scripts.Interface
 {
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
-        public AudioSource receiveDamageAudioSource;
-        public AudioSource drawAudioSource;
-        public AudioSource shootAudioSource;
-        public AudioSource bounceAudioSource;
-
-        public GameObject bloodSplatter;
-        public GameObject bounceSpark;
+        [SerializeField]
+        private GameObject bloodSplatter;
+        [SerializeField]
+        private GameObject bounceSpark;
+        [SerializeField]
+        private float ReactionTime = 0.1f;
 
         private Animator animator;
-
         private GameObject gameController;
 
-        public float ReactionTime = 0.1f;
-
-        private bool dead = false;
         private bool useBrutalDeathAnimation = false;
 
+        private bool dead = false;
         public bool Dead
         {
             get
