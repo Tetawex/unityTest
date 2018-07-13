@@ -125,7 +125,7 @@ namespace Assets.Scripts.Controller
             if (Dead)
                 return;
             Dead = true;
-            gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { enabled = false; });
+            gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });
             animator.Play("Idle");
 
             if (!useBrutalDeathAnimation)
