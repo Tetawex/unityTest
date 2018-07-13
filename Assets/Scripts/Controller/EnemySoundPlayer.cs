@@ -41,7 +41,7 @@ namespace Assets.Scripts.Controller
         }
         public void PlayDrawSound(float volumeScale = 1)
         {
-            audioSource.PlayOneShot(shotClip, volumeScale);
+            audioSource.PlayOneShot(drawClip, volumeScale);
         }
     }
 }
