@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Assets.Scripts.Controller;
+using Assets.Scripts.Interface;
 
-namespace Assets.Scripts.Interface
+namespace Assets.Scripts.Controller
+
 {
     public class GameController : MonoBehaviour, IDrawShootMessageTarget
     {

@@ -1,7 +1,9 @@
-﻿using Assets.Scripts.Model;
+﻿using Assets.Scripts.Interface;
+using Assets.Scripts.Model;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Assets.Scripts.Interface
+namespace Assets.Scripts.Controller
+
 {
     public class GenericDamageableEntityController : MonoBehaviour, IDamageableEntity
     {

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace Assets.Scripts.Interface
+namespace Assets.Scripts.Controller
 {
     public class GunController : MonoBehaviour
     {
