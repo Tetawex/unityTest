@@ -27,7 +27,8 @@ namespace Assets.Scripts.Controller
         public void ReceiveShot(Shot shot)
         {
             Root.ReceiveShot(new LocationalShot(bodyPartMultiplierDictionary[bodyPart], bodyPart, shot));
-            if (bodyPart == BodyPart.ARMORED_TORSO) ;
+            if (bodyPart == BodyPart.ARMORED_TORSO)
+                ;
                 //bodyPart = BodyPart.TORSO;
         }
 
