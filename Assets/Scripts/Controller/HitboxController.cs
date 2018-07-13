@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Model;
+﻿using Assets.Scripts.Controller;
+using Assets.Scripts.Model;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Scripts.Interface
