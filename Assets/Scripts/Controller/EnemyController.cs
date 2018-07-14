@@ -82,6 +82,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead)
                 return;
+            CancelInvoke();
             Invoke("StartDrawing", MathHelper.randomRangeFromVector(drawDelayRange));
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
         }

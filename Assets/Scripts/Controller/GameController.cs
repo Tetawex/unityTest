@@ -37,13 +37,13 @@ namespace Assets.Scripts.Controller
         // Update is called once per frame
         void Update()
         {
-            if (elapsedTime < timeBeforeFirstDraw)
-                elapsedTime += Time.deltaTime;
-            else if (!drawed)
-            {
-                firstShooter.Draw();
-                drawed = true;
-            }
+            //if (elapsedTime < timeBeforeFirstDraw)
+            //    elapsedTime += Time.deltaTime;
+            //else if (!drawed)
+            //{
+            //    firstShooter.Draw();
+            //    drawed = true;
+            //}
         }
 
         public void EnemyShotPlayer()
