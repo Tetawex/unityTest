@@ -82,6 +82,15 @@ namespace Assets.Scripts.Controller
 
             }
         }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.tag.Equals("Projectile"))
+            {
+                GetShot();
+            }
+        }
+
         private void SendDrawEvent()
         {
             ExecuteEvents.Execute<IDrawShootMessageTarget>(Utils.getSingleton<GameController>().gameObject, null, (x, y) => x.PlayerDrawed());
