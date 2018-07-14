@@ -41,12 +41,12 @@ namespace Assets.Scripts.Controller
             playerController = Utils.getSingleton<PlayerController>();
             playerController.CanDraw = false;
             playerMovement = Utils.getSingleton<PlayerMovement>();
-            playerMovement.enabled = false;
+            playerMovement.EnableMovement = false;
             gunController = Utils.getSingleton<GunController>();
             roundContainer = Utils.getSingleton<RoundContainer>();
             gameController = Utils.getSingleton<GameController>();
 
-            StartStandoff();
+            Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
         }
 
         public void StartNewRound()
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Controller
         public void StartStandoff()
         {
             playerController.CanDraw = true;
-            playerMovement.enabled = true;
+            playerMovement.EnableMovement = true;
             gunController.ResetGun();
         }
 
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Controller
             enemiesRemaining = 0;
             gunController.Holster();
             playerController.CanDraw = false;
-            playerMovement.enabled = false;
+            playerMovement.EnableMovement = false;
 
             Invoke("StartNewRound", nextRoundTime);
         }
@@ -88,7 +88,7 @@ namespace Assets.Scripts.Controller
 
         public void OnPlayerDeath()
         {
-            playerMovement.enabled = false;
+            playerMovement.EnableMovement = false;
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
 
