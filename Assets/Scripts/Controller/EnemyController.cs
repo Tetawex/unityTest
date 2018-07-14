@@ -137,13 +137,14 @@ namespace Assets.Scripts.Controller
             Health = Health - shot.Damage;
 
             //animator.Play("Idle");
-            Draw();
+            //Draw();
         }
 
         public void Die()
         {
             if (Dead)
                 return;
+            CancelInvoke();
             Dead = true;
             gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });
             //animator.Play("Idle");
