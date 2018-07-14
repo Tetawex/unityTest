@@ -14,6 +14,11 @@ namespace Assets.Scripts.Util
         }
         [SerializeField]
         private float multiplier;
+        public float Multiplier
+        {
+            get { return multiplier; }
+            set { multiplier = value; }
+        }
 
         private Rigidbody rigidbody;
 
