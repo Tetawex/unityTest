@@ -13,7 +13,7 @@ namespace Assets.Scripts.Controller
         void Update()
         {
             if (Input.GetKeyDown(restartKey))
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
