@@ -40,7 +40,7 @@ namespace Assets.Scripts.Controller
         {
             if (HasProtection)
             {
-                SendDrawEvent();
+                //SendDrawEvent();
                 HasProtection = false;
                 BounceAudioSource.Play();
             }
@@ -63,6 +63,8 @@ namespace Assets.Scripts.Controller
                 }
                 else if (gunController.CanShoot)
                 {
+                    //if (!levelController.FightActive)
+                    //    levelController.StartAction();
                     gunController.Shoot();
 
                     //Raycasting
@@ -90,7 +92,6 @@ namespace Assets.Scripts.Controller
         {
             levelController.StartAction();
             gunController.StartDrawing();
-            SendDrawEvent();
         }
 
         void OnTriggerEnter(Collider other)
@@ -104,9 +105,9 @@ namespace Assets.Scripts.Controller
             }
         }
 
-        private void SendDrawEvent()
-        {
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(Utils.getSingleton<GameController>().gameObject, null, (x, y) => x.PlayerDrawed());
-        }
+        //private void SendDrawEvent()
+        //{
+        //    ExecuteEvents.Execute<IDrawShootMessageTarget>(Utils.getSingleton<GameController>().gameObject, null, (x, y) => x.PlayerDrawed());
+        //}
     }
 }

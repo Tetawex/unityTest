@@ -7,6 +7,9 @@ namespace Assets.Scripts.Controller
 {
     public class LevelController : MonoBehaviour
     {
+        [SerializeField]
+        private float nextRoundTime;
+
         bool fightActive = false;
         public bool FightActive
         {
@@ -28,6 +31,7 @@ namespace Assets.Scripts.Controller
         PlayerController playerController;
         PlayerMovement playerMovement;
         GunController gunController;
+        RoundContainer roundContainer;
 
         private void Start()
         {
@@ -36,19 +40,28 @@ namespace Assets.Scripts.Controller
             playerMovement = Utils.getSingleton<PlayerMovement>();
             playerMovement.enabled = false;
             gunController = Utils.getSingleton<GunController>();
+            roundContainer = Utils.getSingleton<RoundContainer>();
 
             StartStandoff();
         }
 
-        void StartStandoff()
+        public void StartNewRound()
+        {
+            roundContainer.SpawnNextRound();
+            Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+        }
+
+        public void StartStandoff()
         {
             playerController.CanDraw = true;
             playerMovement.enabled = true;
+            gunController.ResetGun();
         }
 
         public void StartAction()
         {
             fightActive = true;
+            roundContainer.CurrentEnemies.ForEach((enemy) => { enemy.Draw(); });
         }
 
         public void EndAction()
@@ -59,11 +72,19 @@ namespace Assets.Scripts.Controller
             gunController.Holster();
             playerController.CanDraw = false;
             playerMovement.enabled = false;
+
+            Invoke("StartNewRound", nextRoundTime);
         }
 
+        
         public void OnPlayerDeath()
         {
             playerMovement.enabled = false;
         }
+
+        //public void PlayerDrawed()
+        //{
+        //    StartAction();
+        //}
     }
 }

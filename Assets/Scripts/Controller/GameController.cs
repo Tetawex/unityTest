@@ -18,7 +18,6 @@ namespace Assets.Scripts.Controller
         public float TimeBeforeFirstDrawLowerBound = 2f;
 
         private GameObject enemyContainer;
-        private List<IDrawer> enemies;
 
         private IDrawer firstShooter;
         private PlayerController player;
@@ -28,10 +27,8 @@ namespace Assets.Scripts.Controller
         {
             player = GameObject.Find("Player").GetComponent<PlayerController>();
             enemyContainer = GameObject.Find("Enemies");
-            enemies = new List<IDrawer>(enemyContainer.GetComponentsInChildren<IDrawer>());
 
             timeBeforeFirstDraw = Random.Range(TimeBeforeFirstDrawLowerBound, TimeBeforeFirstDrawUpperBound);
-            firstShooter = enemies[Random.Range(0, enemies.Count)];
         }
 
         // Update is called once per frame
@@ -49,11 +46,6 @@ namespace Assets.Scripts.Controller
         public void EnemyShotPlayer()
         {
             player.GetShot();
-        }
-
-        public void PlayerDrawed()
-        {
-            enemies.ForEach((enemy) => { enemy.Draw(); });
         }
     }
 }

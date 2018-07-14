@@ -6,6 +6,6 @@ namespace Assets.Scripts.Messaging
     {
         void EnemyShotPlayer();
         //void EnemyDrawed();
-        void PlayerDrawed();
+        //void PlayerDrawed();
     }
 }

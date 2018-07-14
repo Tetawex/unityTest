@@ -56,6 +56,14 @@ namespace Assets.Scripts.Controller
             transform.rotation = Quaternion.Slerp(fromRotation, toRotation, turnState);
         }
 
+        public void ResetGun()
+        {
+            animator.Rebind();
+            drawn = false;
+            toRotation = Quaternion.identity;
+            transform.rotation = Quaternion.identity;
+        }
+
         public void Shoot()
         {
             //if (animator.GetCurrentAnimatorStateInfo(0).IsName("Shoot"))
