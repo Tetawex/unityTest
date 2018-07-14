@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54220681203717274}
   - component: {fileID: 114585440267519792}
   - component: {fileID: 65615952684162750}
+  - component: {fileID: 114154808500949756}
   m_Layer: 8
   m_Name: Normal Projectile
   m_TagString: Projectile
@@ -113,6 +114,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a825bd7fe0de84c868e41abd97b134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114154808500949756
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211580489800958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaf72a548b7fb443809cfacd7917df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.2
 --- !u!114 &114320070244119390
 MonoBehaviour:
   m_ObjectHideFlags: 1

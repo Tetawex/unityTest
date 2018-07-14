@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 54220681203717274}
   - component: {fileID: 114585440267519792}
   - component: {fileID: 65264111360675776}
+  - component: {fileID: 114226417676788200}
   m_Layer: 8
   m_Name: Aimless Projectile
   m_TagString: Projectile
@@ -101,6 +102,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114226417676788200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211580489800958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbaf72a548b7fb443809cfacd7917df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.2
 --- !u!114 &114320070244119390
 MonoBehaviour:
   m_ObjectHideFlags: 1
