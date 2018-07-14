@@ -15,10 +15,12 @@ namespace Assets.Scripts.UI
         private int levelCount;//should assign dynamically by counting the amount of files in Levels folder
 
         private GameObject gridLayout;
+        private Button quitButton;
 
         // Use this for initialization
         void Start()
         {
+            //PlayerPrefs.DeleteAll();
             BindViews();
             BindListeners();
         }
@@ -31,11 +33,13 @@ namespace Assets.Scripts.UI
 
         private void BindViews()
         {
+            quitButton = GameObject.Find("QuitButton").GetComponent<Button>();
             gridLayout = GameObject.Find("GridLayout");
             FillGrid();
         }
         private void BindListeners()
         {
+            quitButton.onClick.AddListener(() => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); });
         }
         private void FillGrid()
         {

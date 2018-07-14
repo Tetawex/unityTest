@@ -58,7 +58,7 @@ namespace Assets.Scripts.UI
         {
             nextButton.onClick.AddListener(() => { SceneManager.LoadScene("Level" + (gameController.levelNumber + 1)); });
             restartButton.onClick.AddListener(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().name); });
-            quitButton.onClick.AddListener(() => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); });
+            quitButton.onClick.AddListener(() => { SceneManager.LoadScene("LevelSelectMenu", LoadSceneMode.Single); });
         }
         //...
         public void EnableButtons()
