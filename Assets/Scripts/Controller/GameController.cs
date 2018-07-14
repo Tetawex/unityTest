@@ -4,12 +4,16 @@ using UnityEngine;
 using System.Linq;
 using Assets.Scripts.Controller;
 using Assets.Scripts.Interface;
+using Assets.Scripts.Util;
 
 namespace Assets.Scripts.Controller
 
 {
     public class GameController : MonoBehaviour, IDrawShootMessageTarget
     {
+        [SerializeField]
+        public int levelNumber = 0;//TODO assign dynamically somehow
+
         private float timeBeforeFirstDraw;
         private float elapsedTime = 0f;
         private bool drawed = false;
@@ -56,6 +60,8 @@ namespace Assets.Scripts.Controller
         }
         public void InvokeLevelCompletedEvent(bool win)
         {
+            if (win)
+                LevelCompleter.UnlockLevel(levelNumber);
             LevelCompletedEvent.Invoke(win);
         }
     }
