@@ -12,6 +12,9 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private float nextRoundTime;
 
+        public delegate void RoundCompletedEventHandler(int roundNumber);
+        public event RoundCompletedEventHandler RoundCompletedEvent;
+
         bool fightActive = false;
         public bool FightActive
         {
@@ -55,6 +58,8 @@ namespace Assets.Scripts.Controller
             {
                 roundContainer.SpawnNextRound();
                 Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+
+                RoundCompletedEvent.Invoke(roundContainer.CurrentRound);
             }
             else
                 gameController.InvokeLevelCompletedEvent(true);
