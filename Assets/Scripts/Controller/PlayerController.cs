@@ -71,7 +71,7 @@ namespace Assets.Scripts.Controller
                     RaycastHit hit;
                     Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-                    if (Physics.Raycast(ray, out hit, shootMask))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, shootMask))
                     {
                         var objectHit = hit.collider.gameObject;
                         var entity = objectHit.GetComponent<IDamageableEntity>();
