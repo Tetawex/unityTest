@@ -17,6 +17,9 @@ namespace Assets.Scripts.UI
 
         private GameController gameController;
 
+        [SerializeField]
+        private float clickCooldown = 1f;
+
         // Use this for initialization
         void Start()
         {
@@ -27,6 +30,7 @@ namespace Assets.Scripts.UI
             BindListeners();
 
             levelCompleteWindow.SetActive(false);
+            SetButtonsEnabled(false);
         }
 
         // Update is called once per frame
@@ -52,10 +56,21 @@ namespace Assets.Scripts.UI
         }
         private void BindListeners()
         {
+            nextButton.onClick.AddListener(() => { SceneManager.LoadScene("Level" + (gameController.levelNumber + 1)); });
             restartButton.onClick.AddListener(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().name); });
             quitButton.onClick.AddListener(() => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); });
         }
         //...
+        public void EnableButtons()
+        {
+            SetButtonsEnabled();
+        }
+        public void SetButtonsEnabled(bool enabled = true)
+        {
+            restartButton.interactable = enabled;
+            nextButton.interactable = enabled;
+            quitButton.interactable = enabled;
+        }
         public void SetLevelCompletedWindowVisibility(bool visibility = true)
         {
             levelCompleteWindow.SetActive(visibility);
@@ -67,6 +82,7 @@ namespace Assets.Scripts.UI
         public void ShowLevelCompletedWindow(bool win)
         {
             SetLevelCompletedWindowVisibility(true);
+            Invoke("EnableButtons", clickCooldown);
             if (win)
             {
                 nextButton.gameObject.SetActive(true);
