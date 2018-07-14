@@ -61,7 +61,7 @@ namespace Assets.Scripts.Controller
         public void InvokeLevelCompletedEvent(bool win)
         {
             if (win)
-                LevelCompleter.UnlockLevel(levelNumber);
+                LevelCompleter.UnlockLevel(levelNumber + 1);
             LevelCompletedEvent.Invoke(win);
         }
     }
