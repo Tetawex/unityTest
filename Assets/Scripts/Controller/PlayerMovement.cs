@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Update ()
     {
+        if (playerController.Dead)
+            return;
         float direction = 0f;
         if (Input.GetKey(KeyCode.A))
             direction -= 1f;
