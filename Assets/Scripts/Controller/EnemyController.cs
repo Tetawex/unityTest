@@ -13,6 +13,12 @@ namespace Assets.Scripts.Controller
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
         [SerializeField]
+        private Vector2 drawDelayRange;
+        [SerializeField]
+        private Vector2 initialFireDelayRange;
+        [SerializeField]
+        private Vector2 refireDelayRange;
+        [SerializeField]
         private GameObject projectilePrefab;
         [SerializeField]
         private Transform fireLocation;
@@ -20,8 +26,6 @@ namespace Assets.Scripts.Controller
         private GameObject bloodSplatter;
         [SerializeField]
         private GameObject bounceSpark;
-        [SerializeField]
-        private float ReactionTime = 0.1f;
 
         private Animator animator;
         private GameController gameController;
@@ -78,7 +82,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead)
                 return;
-            Invoke("StartDrawing", ReactionTime + Random.Range(0f, 0.1f));
+            Invoke("StartDrawing", MathHelper.randomRangeFromVector(drawDelayRange));
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
         }
 
@@ -86,7 +90,10 @@ namespace Assets.Scripts.Controller
         {
             if (Dead)
                 return;
+            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange));
+
             enemySoundPlayer.PlayShootSound();
+            animator.SetTrigger("Shoot");
 
             var player = Utils.getSingleton<PlayerController>();
             var newShot = Instantiate(projectilePrefab).GetComponent<MoveRigidbodyTowards>();
@@ -98,6 +105,8 @@ namespace Assets.Scripts.Controller
 
         private void StartDrawing()
         {
+            Invoke("Shoot", MathHelper.randomRangeFromVector(initialFireDelayRange));
+
             enemySoundPlayer.PlayDrawSound();
             animator.SetTrigger("Draw");
         }

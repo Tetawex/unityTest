@@ -693,6 +693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d5501433417e04f9710cbe15690d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootMask:
+    serializedVersion: 2
+    m_Bits: 512
   HasProtection: 0
   BounceAudioSource: {fileID: 82699011473447226}
   HitAudioSource: {fileID: 82254864820341362}

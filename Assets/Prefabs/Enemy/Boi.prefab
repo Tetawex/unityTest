@@ -580,6 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a97f6e53a44d7a4282987c5f4eb0064, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawDelayRange: {x: 0.1, y: 0.5}
+  initialFireDelayRange: {x: 1, y: 2}
+  refireDelayRange: {x: 0.5, y: 1}
   projectilePrefab: {fileID: 1211580489800958, guid: 170e984dba31b184184108e18f7078f4,
     type: 2}
   fireLocation: {fileID: 4907429326124594}
@@ -587,7 +590,6 @@ MonoBehaviour:
     type: 2}
   bounceSpark: {fileID: 1918565104438636, guid: c85f0415ddaa9dc45917fd6f2fb8bb2f,
     type: 2}
-  ReactionTime: 0.1
   health: 100
 --- !u!114 &114784083734404480
 MonoBehaviour:

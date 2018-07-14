@@ -8,6 +8,8 @@ namespace Assets.Scripts.Controller
 {
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private LayerMask shootMask;
         private GunController gunController;
         private new Camera camera;
         private Animator animator;
@@ -66,7 +68,7 @@ namespace Assets.Scripts.Controller
                     RaycastHit hit;
                     Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
-                    if (Physics.Raycast(ray, out hit))
+                    if (Physics.Raycast(ray, out hit, shootMask))
                     {
                         var objectHit = hit.collider.gameObject;
                         var entity = objectHit.GetComponent<IDamageableEntity>();
