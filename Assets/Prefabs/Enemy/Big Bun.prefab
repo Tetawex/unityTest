@@ -611,8 +611,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drawDelayRange: {x: 0.1, y: 0.5}
-  initialFireDelayRange: {x: 1, y: 2}
-  refireDelayRange: {x: 2, y: 3}
+  initialFireDelayRange: {x: 1.5, y: 2}
+  refireDelayRange: {x: 1, y: 1.5}
   projectilePrefab: {fileID: 1211580489800958, guid: 940b92ffeb0a0794ea0dcc3f28cafe3e,
     type: 2}
   fireLocation: {fileID: 4907429326124594}
