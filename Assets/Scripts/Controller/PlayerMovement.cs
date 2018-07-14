@@ -10,14 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public bool EnableMovement
     {
         get { return enableMovement; }
-        set { enableMovement = value; }
+        set { enableMovement = value; snapBackTimer = snapBackTime; }
     }
     Vector3 initialPosition;
-
     [SerializeField]
     private float moveSpeed = 5f;
     [SerializeField]
     private Vector2 xBounds;
+    [SerializeField]
+    private float snapBackTime;
+
+    float snapBackTimer;
 
     LevelController levelController;
     PlayerController playerController;
@@ -50,7 +53,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            transform.moveTowards(initialPosition, moveSpeed);
+            snapBackTimer -= Time.deltaTime;
+            if (snapBackTimer <= 0f)
+            {
+                transform.moveTowards(initialPosition, moveSpeed);
+            }
         }
     }
 }
