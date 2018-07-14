@@ -97,11 +97,8 @@ namespace Assets.Scripts.Controller
 
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");
-
-            var player = Utils.getSingleton<PlayerController>();
-            var newShot = Instantiate(projectilePrefab).GetComponent<MoveRigidbodyTowards>();
-            newShot.transform.position = fireLocation.transform.position;
-            newShot.Direction = player.transform.position - newShot.transform.position;
+            
+            Instantiate(projectilePrefab, fireLocation.transform.position, Quaternion.identity);
 
             //ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }

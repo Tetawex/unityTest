@@ -26,7 +26,7 @@ namespace Assets.Scripts.Util
         // Update is called once per frame
         void Update()
         {
-            rigidbody.MovePosition(transform.position + direction * multiplier * Time.deltaTime);
+            rigidbody.MovePosition(transform.position + (direction.normalized * multiplier * Time.deltaTime));
             //rigidbody.velocity = direction * multiplier;
             //transform.position += direction * multiplier * Time.deltaTime;
         }
