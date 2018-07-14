@@ -17,8 +17,12 @@ public class BurstSpawner : MonoBehaviour
     private float shotTimer;
     private Vector3 direction;
 
+    private ProjectileController projectileController;
+
     void Start ()
     {
+        projectileController = GetComponent<ProjectileController>();
+
         direction = Utils.getSingleton<PlayerController>().transform.position - transform.position;
         direction = new Vector3(direction.x, 0f, direction.z);
 
@@ -28,7 +32,7 @@ public class BurstSpawner : MonoBehaviour
 	
 	void Update ()
     {
-        if (shotsFired >= shotCount)
+        if (shotsFired >= shotCount || projectileController.enemy.Dead)
         {
             Destroy(gameObject);
             return;

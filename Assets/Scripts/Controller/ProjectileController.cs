@@ -6,6 +6,7 @@ namespace Assets.Scripts.Controller
 {
     public class ProjectileController : MonoBehaviour
     {
+        public EnemyController enemy;
 
         // Use this for initialization
         void Start()

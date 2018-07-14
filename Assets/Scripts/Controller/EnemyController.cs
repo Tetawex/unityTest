@@ -98,7 +98,9 @@ namespace Assets.Scripts.Controller
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");
             
-            Instantiate(projectilePrefab, fireLocation.transform.position, Quaternion.identity);
+            var controller = Instantiate(projectilePrefab, fireLocation.transform.position, Quaternion.identity).GetComponent<ProjectileController>();
+            controller.enemy = this;
+
 
             //ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
