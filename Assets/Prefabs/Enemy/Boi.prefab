@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyPart: 2
-  Root: {fileID: 0}
+  Root: {fileID: 114526239908053560}
 --- !u!212 &212665193142782950
 SpriteRenderer:
   m_ObjectHideFlags: 1
