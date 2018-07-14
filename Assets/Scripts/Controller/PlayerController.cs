@@ -19,6 +19,7 @@ namespace Assets.Scripts.Controller
 
         public AudioSource BounceAudioSource;
         public AudioSource HitAudioSource;
+        
 
         private bool dead;
         public bool Dead
@@ -81,6 +82,11 @@ namespace Assets.Scripts.Controller
                         }
 
                         Debug.Log(hit.point);
+                        gunController.LookAt(hit.point);
+                    }
+                    else
+                    {
+                        Physics.Raycast(ray, out hit);
                         gunController.LookAt(hit.point);
                     }
                 }
