@@ -14,8 +14,9 @@ namespace Assets.Scripts.Controller
         }
 
         int roundIndex = -1;
+        public int CurrentRound { get { return roundIndex + 1; } }
         public int TotalRounds { get { return transform.childCount; } }
-        public bool HasMoreRounds { get { return roundIndex < TotalRounds-1; } }
+        public bool HasMoreRounds { get { return roundIndex < TotalRounds - 1; } }
 
         private Animator animator;
 
