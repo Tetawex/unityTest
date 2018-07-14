@@ -136,7 +136,7 @@ namespace Assets.Scripts.Controller
 
             Health = Health - shot.Damage;
 
-            animator.Play("Idle");
+            //animator.Play("Idle");
             Draw();
         }
 
@@ -146,7 +146,7 @@ namespace Assets.Scripts.Controller
                 return;
             Dead = true;
             gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });
-            animator.Play("Idle");
+            //animator.Play("Idle");
 
             if (!useBrutalDeathAnimation)
                 animator.SetBool("Dead", true);
