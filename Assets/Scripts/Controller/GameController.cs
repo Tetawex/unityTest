@@ -22,6 +22,9 @@ namespace Assets.Scripts.Controller
         private IDrawer firstShooter;
         private PlayerController player;
 
+        public delegate void LevelCompletedEventHandler(bool win);
+        public event LevelCompletedEventHandler LevelCompletedEvent;
+
         // Use this for initialization
         void Start()
         {
@@ -45,7 +48,15 @@ namespace Assets.Scripts.Controller
 
         public void EnemyShotPlayer()
         {
-            player.GetShot();
+            //player.GetShot();
+            //Debug.Log("???");
+
+            //Invoke | || || |__ event
+            InvokeLevelCompletedEvent(false);
+        }
+        public void InvokeLevelCompletedEvent(bool win)
+        {
+            LevelCompletedEvent.Invoke(win);
         }
     }
 }

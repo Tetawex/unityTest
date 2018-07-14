@@ -1,7 +1,9 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Util;
+using UnityEngine.EventSystems;
+using Assets.Scripts.Messaging;
 
 namespace Assets.Scripts.Controller
 {
@@ -16,7 +18,7 @@ namespace Assets.Scripts.Controller
             get { return fightActive; }
         }
 
-        int enemiesRemaining = 0;
+        int enemiesRemaining = 0;//mb make it private?
         public int EnemiesRemaining
         {
             get { return enemiesRemaining; }
@@ -32,6 +34,7 @@ namespace Assets.Scripts.Controller
         PlayerMovement playerMovement;
         GunController gunController;
         RoundContainer roundContainer;
+        GameController gameController;
 
         private void Start()
         {
@@ -41,14 +44,20 @@ namespace Assets.Scripts.Controller
             playerMovement.enabled = false;
             gunController = Utils.getSingleton<GunController>();
             roundContainer = Utils.getSingleton<RoundContainer>();
+            gameController = Utils.getSingleton<GameController>();
 
             StartStandoff();
         }
 
         public void StartNewRound()
         {
-            roundContainer.SpawnNextRound();
-            Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+            if (roundContainer.HasMoreRounds)
+            {
+                roundContainer.SpawnNextRound();
+                Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+            }
+            else
+                gameController.InvokeLevelCompletedEvent(true);
         }
 
         public void StartStandoff()
@@ -76,10 +85,11 @@ namespace Assets.Scripts.Controller
             Invoke("StartNewRound", nextRoundTime);
         }
 
-        
+
         public void OnPlayerDeath()
         {
             playerMovement.enabled = false;
+            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
 
         //public void PlayerDrawed()

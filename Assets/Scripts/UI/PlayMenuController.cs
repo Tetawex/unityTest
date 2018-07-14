@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Controller;
+using Assets.Scripts.Model;
+using Assets.Scripts.Util;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,11 +15,18 @@ namespace Assets.Scripts.UI
         private Text levelCompletedText;
         private GameObject levelCompleteWindow;
 
+        private GameController gameController;
+
         // Use this for initialization
         void Start()
         {
+            gameController = Utils.getSingleton<GameController>();
+            gameController.LevelCompletedEvent += ShowLevelCompletedWindow;
+
             BindViews();
             BindListeners();
+
+            levelCompleteWindow.SetActive(false);
         }
 
         // Update is called once per frame
@@ -33,6 +43,7 @@ namespace Assets.Scripts.UI
                 restartButton = GameObject.Find("RestartButton").GetComponent<Button>();
                 quitButton = GameObject.Find("QuitButton").GetComponent<Button>();
                 levelCompletedText = GameObject.Find("LevelCompletedText").GetComponent<Text>();
+                levelCompleteWindow = GameObject.Find("WindowWithVerticalLayout");
             }
             catch
             {
@@ -55,9 +66,16 @@ namespace Assets.Scripts.UI
         }
         public void ShowLevelCompletedWindow(bool win)
         {
-            if (!win)
+            SetLevelCompletedWindowVisibility(win);
+            if (win)
+            {
+                nextButton.gameObject.SetActive(true);
+                levelCompletedText.text = Strings.LevelCompletedFailure;
+            }
+            else
             {
                 nextButton.gameObject.SetActive(false);
+                levelCompletedText.text = Strings.LevelCompletedSuccess;
             }
         }
     }

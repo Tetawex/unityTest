@@ -10,11 +10,12 @@ namespace Assets.Scripts.Controller
         List<IDrawer> currentEnemies;
         public List<IDrawer> CurrentEnemies
         {
-            get {return currentEnemies;}
+            get { return currentEnemies; }
         }
 
         int roundIndex = -1;
         public int TotalRounds { get { return transform.childCount; } }
+        public bool HasMoreRounds { get { return roundIndex < TotalRounds-1; } }
 
         private Animator animator;
 
@@ -43,7 +44,7 @@ namespace Assets.Scripts.Controller
             animator.SetTrigger("Fall");
             //animator.ResetTrigger("Fall");
         }
-        
+
         void Update()
         {
 
