@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4027011436396438}
-  - component: {fileID: 135028120858979878}
   - component: {fileID: 114932332207744752}
   - component: {fileID: 114320070244119390}
   - component: {fileID: 54220681203717274}
   - component: {fileID: 114585440267519792}
+  - component: {fileID: 65264111360675776}
   m_Layer: 8
   m_Name: Aimless Projectile
   m_TagString: Projectile
@@ -89,6 +89,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65264111360675776
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211580489800958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.8, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114320070244119390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -125,18 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a962158e1db6a864eb4c3348b8baaea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &135028120858979878
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1211580489800958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.44
-  m_Center: {x: 0, y: 0, z: 0}
+  enemy: {fileID: 0}
 --- !u!212 &212721036587133518
 SpriteRenderer:
   m_ObjectHideFlags: 1
