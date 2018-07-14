@@ -66,16 +66,16 @@ namespace Assets.Scripts.UI
         }
         public void ShowLevelCompletedWindow(bool win)
         {
-            SetLevelCompletedWindowVisibility(win);
+            SetLevelCompletedWindowVisibility(true);
             if (win)
             {
                 nextButton.gameObject.SetActive(true);
-                levelCompletedText.text = Strings.LevelCompletedFailure;
+                levelCompletedText.text = Strings.LevelCompletedSuccess;
             }
             else
             {
                 nextButton.gameObject.SetActive(false);
-                levelCompletedText.text = Strings.LevelCompletedSuccess;
+                levelCompletedText.text = Strings.LevelCompletedFailure;
             }
         }
     }
