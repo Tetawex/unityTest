@@ -5,7 +5,7 @@ namespace Assets.Scripts.Messaging
     public interface IDrawShootMessageTarget: IEventSystemHandler
     {
         void EnemyShotPlayer();
-        void EnemyDrawed();
+        //void EnemyDrawed();
         void PlayerDrawed();
     }
 }

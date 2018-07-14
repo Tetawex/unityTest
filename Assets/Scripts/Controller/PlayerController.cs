@@ -11,6 +11,7 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private LayerMask shootMask;
         private GunController gunController;
+        private LevelController levelController;
         private new Camera camera;
         private Animator animator;
 
@@ -31,6 +32,7 @@ namespace Assets.Scripts.Controller
         void Start()
         {
             gunController = GetComponentInChildren<GunController>();
+            levelController = Utils.getSingleton<LevelController>();
             camera = GetComponentInChildren<Camera>();
             animator = GetComponent<Animator>();
         }
@@ -45,6 +47,7 @@ namespace Assets.Scripts.Controller
             else if (true)
             {
                 Dead = true;
+                levelController.OnPlayerDeath();
                 animator.SetBool("Dead", true);
                 HitAudioSource.Play();
             }
@@ -56,9 +59,7 @@ namespace Assets.Scripts.Controller
             {
                 if (!gunController.Drawn)
                 {
-                    gunController.StartDrawing();
-                    SendDrawEvent();
-
+                    Draw();
                 }
                 else if (gunController.CanShoot)
                 {
@@ -85,8 +86,18 @@ namespace Assets.Scripts.Controller
             }
         }
 
+        public void Draw()
+        {
+            levelController.StartAction();
+            gunController.StartDrawing();
+            SendDrawEvent();
+        }
+
         void OnTriggerEnter(Collider other)
         {
+            if (dead || !levelController.FightActive)
+                return;
+
             if (other.tag.Equals("Projectile"))
             {
                 GetShot();

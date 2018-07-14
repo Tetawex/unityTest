@@ -79,6 +79,14 @@ namespace Assets.Scripts.Controller
         {
             Drawn = true;
         }
+        public void Holster()
+        {
+            startedDrawing = false;
+            drawn = false;
+            animator.ResetTrigger("Draw");
+            animator.SetTrigger("Holster");
+            drawAudioSource.Play();
+        }
         public void LookAt(Vector3 point)
         {
             toRotation = Quaternion.LookRotation(point - transform.position, Vector3.up);

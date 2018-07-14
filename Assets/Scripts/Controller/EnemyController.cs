@@ -12,6 +12,7 @@ namespace Assets.Scripts.Controller
 {
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
+
         [SerializeField]
         private Vector2 drawDelayRange;
         [SerializeField]
@@ -66,6 +67,7 @@ namespace Assets.Scripts.Controller
         // Use this for initialization
         void Start()
         {
+            Utils.getSingleton<LevelController>().EnemiesRemaining++;
             animator = GetComponent<Animator>();
             enemySoundPlayer = GetComponent<EnemySoundPlayer>();
             gameController = Utils.getSingleton<GameController>();
@@ -84,12 +86,12 @@ namespace Assets.Scripts.Controller
                 return;
             CancelInvoke();
             Invoke("StartDrawing", MathHelper.randomRangeFromVector(drawDelayRange));
-            ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
+            //ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
         }
 
         public void Shoot()
         {
-            if (Dead)
+            if (Dead || Utils.getSingleton<PlayerController>().Dead)
                 return;
             Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange));
 
@@ -145,6 +147,8 @@ namespace Assets.Scripts.Controller
         {
             if (Dead)
                 return;
+            var levelController = Utils.getSingleton<LevelController>();
+            levelController.EnemiesRemaining--;
             CancelInvoke();
             Dead = true;
             gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });

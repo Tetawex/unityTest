@@ -55,10 +55,5 @@ namespace Assets.Scripts.Controller
         {
             enemies.ForEach((enemy) => { enemy.Draw(); });
         }
-
-        public void EnemyDrawed()
-        {
-            player.CanDraw = true;
-        }
     }
 }

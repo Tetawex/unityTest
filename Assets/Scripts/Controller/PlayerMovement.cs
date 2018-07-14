@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Util;
+using Assets.Scripts.Controller;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,11 +10,15 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed = 5f;
     [SerializeField]
     private Vector2 xBounds;
+
+    LevelController levelController;
+    PlayerController playerController;
     
 	void Start ()
     {
-		
-	}
+        levelController = Utils.getSingleton<LevelController>();
+        playerController = Utils.getSingleton<PlayerController>();
+    }
 	
 	void Update ()
     {
@@ -23,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
             direction += 1f;
         if (direction != 0f)
         {
+            if (!levelController.FightActive)
+                playerController.Draw();
+
             var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
             newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
             transform.position = new Vector3(newX, transform.position.y, transform.position.z);

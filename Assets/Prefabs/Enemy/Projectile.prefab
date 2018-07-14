@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114932332207744752}
   - component: {fileID: 114320070244119390}
   - component: {fileID: 54220681203717274}
+  - component: {fileID: 114585440267519792}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Projectile
@@ -101,6 +102,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: -1}
   multiplier: 2
+--- !u!114 &114585440267519792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211580489800958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3085142aeb29fa14abfaec40aefe7e5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifespan: 5
 --- !u!114 &114932332207744752
 MonoBehaviour:
   m_ObjectHideFlags: 1
