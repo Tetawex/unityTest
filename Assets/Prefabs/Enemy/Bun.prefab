@@ -648,7 +648,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1211580489800958, guid: 170e984dba31b184184108e18f7078f4,
     type: 2}
   fireLocation: {fileID: 4907429326124594}
-  bloodSplatter: {fileID: 1431703641782024, guid: 947c79cd35314fb4da84010f07a3fe62,
+  bloodSplatter: {fileID: 1881871837879234, guid: 947c79cd35314fb4da84010f07a3fe62,
     type: 2}
   bounceSpark: {fileID: 1918565104438636, guid: c85f0415ddaa9dc45917fd6f2fb8bb2f,
     type: 2}

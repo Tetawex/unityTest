@@ -97,7 +97,7 @@ namespace Assets.Scripts.Controller
 
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");
-            
+
             var controller = Instantiate(projectilePrefab, fireLocation.transform.position, Quaternion.identity).GetComponent<ProjectileController>();
             controller.enemy = this;
 
@@ -122,15 +122,15 @@ namespace Assets.Scripts.Controller
 
             var rotation = Quaternion.LookRotation(shot.OriginPoint).eulerAngles;
             rotation.x = 0;
-            if (!(shot.BodyPart == BodyPart.ARMORED_TORSO))
+            if ((Health - shot.Damage) > 0)
             {
                 enemySoundPlayer.PlayHitSound();
-                Instantiate(bloodSplatter, shot.ImpactPoint, Quaternion.Euler(rotation));
+                Instantiate(bounceSpark, shot.ImpactPoint, Quaternion.Euler(rotation));
             }
             else
             {
-                enemySoundPlayer.PlayBounceSound();
-                Instantiate(bounceSpark, shot.ImpactPoint, Quaternion.Euler(rotation));
+                enemySoundPlayer.PlayHitSound();
+                Instantiate(bloodSplatter, shot.ImpactPoint, Quaternion.Euler(rotation));
             }
 
             if (shot.BodyPart == BodyPart.HEAD)
