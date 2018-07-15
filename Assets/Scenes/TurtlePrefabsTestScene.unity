@@ -1470,36 +1470,6 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 224026655964918230, guid: cd560a96829156642bbfb69c3dda5980,
         type: 2}
       propertyPath: m_AnchorMin.y
@@ -1530,25 +1500,35 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224622293542585396, guid: cd560a96829156642bbfb69c3dda5980,
+    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
         type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 224637524888846988, guid: cd560a96829156642bbfb69c3dda5980,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
+      propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224637524888846988, guid: cd560a96829156642bbfb69c3dda5980,
+    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
         type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 135.26
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114772843362343110, guid: cd560a96829156642bbfb69c3dda5980,
+    - target: {fileID: 224137255362431540, guid: cd560a96829156642bbfb69c3dda5980,
         type: 2}
-      propertyPath: m_Text
-      value: YOU DIED
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224081879972565160, guid: cd560a96829156642bbfb69c3dda5980,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd560a96829156642bbfb69c3dda5980, type: 2}
