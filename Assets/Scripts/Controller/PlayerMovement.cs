@@ -46,12 +46,12 @@ public class PlayerMovement : MonoBehaviour
             direction -= 1f;
         if (Input.GetKey(KeyCode.D))
             direction += 1f;
-        if (EnableMovement)
+        if (EnableMovement && levelController.FightActive)
         {
             if (direction != 0f)
             {
-                if (!levelController.FightActive)
-                    playerController.Draw();
+                //if (!levelController.FightActive)
+                //    playerController.Draw();
 
                 var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
                 newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
