@@ -46,6 +46,15 @@ namespace Assets.Scripts.Controller
             //animator.ResetTrigger("Fall");
         }
 
+        public void OnEnemiesHitGround()
+        {
+            var enemyTransform = transform.GetChild(roundIndex);
+            for (int i = 0; i < enemyTransform.childCount; i++)
+            {
+                enemyTransform.GetChild(i).GetComponentInChildren<ParticleSystem>().Play();
+            }
+        }
+
         void Update()
         {
 
