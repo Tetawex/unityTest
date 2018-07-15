@@ -19,6 +19,7 @@ namespace Assets.Scripts.Controller
         {
             animator.SetTrigger("Destroy");
             hitSound.Play();
+            collider.enabled = false;
 
             var rotation = Quaternion.LookRotation(shot.OriginPoint).eulerAngles;
             rotation.x = 0;
