@@ -110,6 +110,8 @@ namespace Assets.Scripts.Controller
 
         void PlayFightMusic()
         {
+            if (!fightActive)
+                return;
             if (!musicStarted)
             {
                 fightMusic.time = audioTime;
