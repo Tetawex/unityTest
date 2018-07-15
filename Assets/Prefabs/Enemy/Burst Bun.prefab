@@ -462,7 +462,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -601,7 +601,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84403b4f787f4f49a533fd9f3494d54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotClip: {fileID: 8300000, guid: 74d27376c84c150479896db61138ca54, type: 3}
+  shotClips:
+  - {fileID: 8300000, guid: 418263bd3b3395f4a9595f1d7aee37e0, type: 3}
+  - {fileID: 8300000, guid: 111681a73c32f8d4e9cb1cf86f0a780c, type: 3}
+  - {fileID: 8300000, guid: ce88c3c96749e434f87622faebc53177, type: 3}
+  - {fileID: 8300000, guid: 8193cf421d5d63c438b86bf07100d90d, type: 3}
+  - {fileID: 8300000, guid: 39c57a6a2211824489f57c3ac387bc46, type: 3}
   drawClip: {fileID: 8300000, guid: 5b3c136f43c6f354890a12313b43954b, type: 3}
   bounceClip: {fileID: 8300000, guid: 3ff8f3514d06e00409a0860ec507e809, type: 3}
   hitClip: {fileID: 8300000, guid: 0529ddd07760cfc4eb1e52ea05ee2945, type: 3}

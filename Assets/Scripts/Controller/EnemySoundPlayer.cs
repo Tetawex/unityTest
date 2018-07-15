@@ -6,7 +6,7 @@ namespace Assets.Scripts.Controller
     public class EnemySoundPlayer : MonoBehaviour
     {
         [SerializeField]
-        private AudioClip shotClip;
+        private AudioClip[] shotClips;
         [SerializeField]
         private AudioClip drawClip;
         [SerializeField]
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Controller
 
         public void PlayShootSound(float volumeScale = 1)
         {
-            audioSource.PlayOneShot(shotClip, volumeScale);
+            audioSource.PlayOneShot(shotClips[Random.Range(0, shotClips.Length)], volumeScale);
         }
         public void PlayHitSound(float volumeScale = 1)
         {
