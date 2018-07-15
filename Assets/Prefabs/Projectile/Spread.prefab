@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shotPrefab: {fileID: 1211580489800958, guid: f4b98061ade18104cb71c7cf3213db0c, type: 2}
-  angleSpread: 45
+  angleSpread: 30
   mainSpeed: 7
   sideSpeed: 7
 --- !u!114 &114570462195979070
