@@ -12,11 +12,15 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private float nextRoundTime;
         [SerializeField]
+        private float standoffStartTime;
+        [SerializeField]
         private AudioSource standOffMusic;
         [SerializeField]
         private AudioSource fightMusic;
         [SerializeField]
         private float fightMusicStartDelay;
+        [SerializeField]
+        private AudioClip enemyLandClip;
 
         public delegate void RoundCompletedEventHandler(int roundNumber);
         public event RoundCompletedEventHandler RoundCompletedEvent;
@@ -48,6 +52,7 @@ namespace Assets.Scripts.Controller
         GunController gunController;
         RoundContainer roundContainer;
         GameController gameController;
+        AudioSource sfxSource;
 
         private void Start()
         {
@@ -58,8 +63,9 @@ namespace Assets.Scripts.Controller
             gunController = Utils.getSingleton<GunController>();
             roundContainer = Utils.getSingleton<RoundContainer>();
             gameController = Utils.getSingleton<GameController>();
+            sfxSource = GetComponent<AudioSource>();
 
-            Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+            Invoke("StartStandoff", standoffStartTime);
         }
 
         public void StartNewRound()
@@ -67,7 +73,7 @@ namespace Assets.Scripts.Controller
             if (roundContainer.HasMoreRounds)
             {
                 roundContainer.SpawnNextRound();
-                Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
+                Invoke("StartStandoff", standoffStartTime);
 
                 RoundCompletedEvent.Invoke(roundContainer.CurrentRound);
             }
@@ -77,7 +83,7 @@ namespace Assets.Scripts.Controller
 
         public void OnEnemiesHitGround()
         {
-            //standOffMusic.Play();
+            sfxSource.PlayOneShot(enemyLandClip);
         }
 
         public void StartStandoff()
