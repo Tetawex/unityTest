@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Interface;
+using Assets.Scripts.Util;
 
 namespace Assets.Scripts.Controller
 {
@@ -53,6 +54,7 @@ namespace Assets.Scripts.Controller
             {
                 enemyTransform.GetChild(i).GetComponentInChildren<ParticleSystem>().Play();
             }
+            Utils.getSingleton<LevelController>().OnEnemiesHitGround();
         }
 
         void Update()

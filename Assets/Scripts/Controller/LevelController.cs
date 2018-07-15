@@ -11,6 +11,12 @@ namespace Assets.Scripts.Controller
     {
         [SerializeField]
         private float nextRoundTime;
+        [SerializeField]
+        private AudioSource standOffMusic;
+        [SerializeField]
+        private AudioSource fightMusic;
+        [SerializeField]
+        private float fightMusicStartDelay;
 
         public delegate void RoundCompletedEventHandler(int roundNumber);
         public event RoundCompletedEventHandler RoundCompletedEvent;
@@ -69,8 +75,14 @@ namespace Assets.Scripts.Controller
                 gameController.InvokeLevelCompletedEvent(true);
         }
 
+        public void OnEnemiesHitGround()
+        {
+            //standOffMusic.Play();
+        }
+
         public void StartStandoff()
         {
+            standOffMusic.Play();
             playerController.CanDraw = true;
             playerMovement.EnableMovement = true;
             gunController.ResetGun();
@@ -81,11 +93,14 @@ namespace Assets.Scripts.Controller
             PlayerStartedActionEvent.Invoke();
             fightActive = true;
             roundContainer.CurrentEnemies.ForEach((enemy) => { enemy.Draw(); });
+            standOffMusic.Stop();
+            fightMusic.PlayScheduled(AudioSettings.dspTime + fightMusicStartDelay);
         }
 
         public void EndAction()
         {
             fightActive = false;
+            fightMusic.Stop();
 
             enemiesRemaining = 0;
             gunController.Holster();
@@ -98,6 +113,7 @@ namespace Assets.Scripts.Controller
 
         public void OnPlayerDeath()
         {
+            fightMusic.Stop();
             playerMovement.EnableMovement = false;
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
         }
