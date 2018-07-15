@@ -106,7 +106,8 @@ namespace Assets.Scripts.UI
             Invoke("EnableButtons", clickCooldown);
             if (win)
             {
-                nextButton.gameObject.SetActive(true);
+                if (gameController.levelNumber != 5)
+                    nextButton.gameObject.SetActive(true);
                 levelCompletedText.text = Strings.LevelCompletedSuccess;
             }
             else
