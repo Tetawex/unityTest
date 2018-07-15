@@ -48,8 +48,10 @@ namespace Assets.Scripts.UI
                 var buttonGo = Instantiate(buttonPrefab, Vector3.zero, Quaternion.identity, gridLayout.transform);
 
                 var button = buttonGo.GetComponentInChildren<Button>();
-                if (!(i == 1 || (PlayerPrefs.GetInt(LevelStateData.LevelCodePrefsKey + i, 0)) == 1))
-                    button.interactable = false;//disable the button
+
+                //gah just unlock everything instead
+                //if (!(i == 1 || (PlayerPrefs.GetInt(LevelStateData.LevelCodePrefsKey + i, 0)) == 1))
+                //button.interactable = false;//disable the button
 
                 var textbox = buttonGo.GetComponentInChildren<Text>();
                 textbox.text = (i).ToString();
