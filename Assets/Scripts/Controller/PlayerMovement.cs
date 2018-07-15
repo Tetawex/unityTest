@@ -19,17 +19,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 xBounds;
     [SerializeField]
     private float snapBackTime;
+    [SerializeField]
+    private float cameraAngleExtreme;
 
     float snapBackTimer;
 
     LevelController levelController;
     PlayerController playerController;
+
+    public Camera camera;
     
 	void Start ()
     {
         levelController = Utils.getSingleton<LevelController>();
         playerController = Utils.getSingleton<PlayerController>();
         initialPosition = transform.position;
+        camera = GetComponentInChildren<Camera>();
     }
 	
 	void Update ()
@@ -51,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
                 var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
                 newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
                 transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
             }
         }
         else
@@ -61,5 +67,8 @@ public class PlayerMovement : MonoBehaviour
                 transform.moveTowards(initialPosition, moveSpeed);
             }
         }
+        float distance = xBounds.y;
+        float cameraAngle = Mathf.Lerp(0f, cameraAngleExtreme, Mathf.Abs(transform.position.x) / distance) * -Mathf.Sign(transform.position.x);
+        transform.localEulerAngles = Vector3.up * cameraAngle;
     }
 }

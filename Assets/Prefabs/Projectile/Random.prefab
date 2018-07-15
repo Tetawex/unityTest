@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4287409362879018}
   - component: {fileID: 114570462195979070}
-  - component: {fileID: 114517282408801098}
+  - component: {fileID: 114183474482003748}
   m_Layer: 0
-  m_Name: Spread
+  m_Name: Random
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114517282408801098
+--- !u!114 &114183474482003748
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,13 +49,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1912202007536690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4a4cddbfb4c59a40a4e911e13f96f1f, type: 3}
+  m_Script: {fileID: 11500000, guid: f9f8843f5945ccd45ac85649ae64b9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotPrefab: {fileID: 1211580489800958, guid: f4b98061ade18104cb71c7cf3213db0c, type: 2}
-  angleSpread: 30
-  mainSpeed: 7
-  sideSpeed: 7
+  shot: {fileID: 1211580489800958, guid: f4b98061ade18104cb71c7cf3213db0c, type: 2}
+  targetIcon: {fileID: 1798788586769814, guid: d8cea8a70424e3e4bb28cffc2382fe54, type: 2}
+  crosshairFrontDistance: -3
+  shootAtBounds: {x: -7, y: 7}
+  bulletSpeed: 12
 --- !u!114 &114570462195979070
 MonoBehaviour:
   m_ObjectHideFlags: 1

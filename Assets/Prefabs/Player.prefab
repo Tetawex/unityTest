@@ -683,6 +683,8 @@ MonoBehaviour:
   moveSpeed: 10
   xBounds: {x: -7.5, y: 7.5}
   snapBackTime: 0.75
+  cameraAngleExtreme: 15
+  camera: {fileID: 0}
 --- !u!114 &114473591619323628
 MonoBehaviour:
   m_ObjectHideFlags: 1
