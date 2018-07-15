@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 82998341579167322}
   - component: {fileID: 114727097329797804}
   - component: {fileID: 65338615086851928}
-  - component: {fileID: 114650257328910476}
   m_Layer: 9
   m_Name: Cactus (3)
   m_TagString: Untagged
@@ -107,7 +106,6 @@ GameObject:
   - component: {fileID: 82111495982022608}
   - component: {fileID: 114409548255208560}
   - component: {fileID: 65781813990212524}
-  - component: {fileID: 114084808431441988}
   m_Layer: 9
   m_Name: Cactus
   m_TagString: Untagged
@@ -127,7 +125,6 @@ GameObject:
   - component: {fileID: 82733742262812578}
   - component: {fileID: 114962922746779846}
   - component: {fileID: 65541350623985512}
-  - component: {fileID: 114949220861399664}
   m_Layer: 9
   m_Name: Cactus (4)
   m_TagString: Untagged
@@ -162,7 +159,6 @@ GameObject:
   - component: {fileID: 82219489275941222}
   - component: {fileID: 114528884058095356}
   - component: {fileID: 65703567276082560}
-  - component: {fileID: 114956469733300210}
   m_Layer: 9
   m_Name: Cactus (1)
   m_TagString: Untagged
@@ -198,7 +194,6 @@ GameObject:
   - component: {fileID: 82473785953131914}
   - component: {fileID: 114141630299331744}
   - component: {fileID: 65967143831465484}
-  - component: {fileID: 114823171375951574}
   m_Layer: 9
   m_Name: Cactus (2)
   m_TagString: Untagged
@@ -984,17 +979,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114084808431441988
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1439557609022046}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb61ff23be5327a46a673a851f9a8f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114141630299331744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1034,17 +1018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPrefab: {fileID: 1918565104438636, guid: c85f0415ddaa9dc45917fd6f2fb8bb2f, type: 2}
   hitSound: {fileID: 82219489275941222}
---- !u!114 &114650257328910476
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1434395211050116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb61ff23be5327a46a673a851f9a8f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114727097329797804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,39 +1031,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitPrefab: {fileID: 1918565104438636, guid: c85f0415ddaa9dc45917fd6f2fb8bb2f, type: 2}
   hitSound: {fileID: 82998341579167322}
---- !u!114 &114823171375951574
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1984779672068294}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb61ff23be5327a46a673a851f9a8f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114949220861399664
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1506478427415220}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb61ff23be5327a46a673a851f9a8f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114956469733300210
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1833666374125546}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb61ff23be5327a46a673a851f9a8f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114962922746779846
 MonoBehaviour:
   m_ObjectHideFlags: 1
