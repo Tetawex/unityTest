@@ -118,11 +118,11 @@ namespace Assets.Scripts.Controller
             if (Dead) return;
 
             if (shot.BodyPart == BodyPart.HEAD)
-                useBrutalDeathAnimation = true;
+                useBrutalDeathAnimation = false;
 
             var rotation = Quaternion.LookRotation(shot.OriginPoint).eulerAngles;
             rotation.x = 0;
-            if ((Health - shot.Damage) > 0)
+            if ((Health - 4 * shot.Damage) > 0)
             {
                 enemySoundPlayer.PlayHitSound();
                 Instantiate(bounceSpark, shot.ImpactPoint, Quaternion.Euler(rotation));
@@ -133,11 +133,8 @@ namespace Assets.Scripts.Controller
                 Instantiate(bloodSplatter, shot.ImpactPoint, Quaternion.Euler(rotation));
             }
 
-            if (shot.BodyPart == BodyPart.HEAD)
-                useBrutalDeathAnimation = true;
-
-            //Health = Health - shot.Damage;
-            Health = 0f;
+            Health = Health - 4 * shot.Damage;
+            //Health = 0f;
 
             //animator.Play("Idle");
             //Draw();

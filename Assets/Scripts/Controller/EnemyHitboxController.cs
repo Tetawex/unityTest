@@ -20,9 +20,9 @@ namespace Assets.Scripts.Controller
             bodyPartMultiplierDictionary = new Dictionary<BodyPart, float>();
             bodyPartMultiplierDictionary[BodyPart.HEAD] = 2f;
             bodyPartMultiplierDictionary[BodyPart.TORSO] = 1f;
-            bodyPartMultiplierDictionary[BodyPart.LEG] = 0.7f;
-            bodyPartMultiplierDictionary[BodyPart.ARM] = 0.7f;
-            bodyPartMultiplierDictionary[BodyPart.ARMORED_TORSO] = 0.3f;
+            bodyPartMultiplierDictionary[BodyPart.LEG] = 1f;
+            bodyPartMultiplierDictionary[BodyPart.ARM] = 1f;
+            bodyPartMultiplierDictionary[BodyPart.ARMORED_TORSO] = 1f;
         }
         public void ReceiveShot(Shot shot)
         {
