@@ -148,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22173c448c84a444bb24bac415b8c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loopStartTime: 1.8140589
-  loopEndTime: 3.854059
+  loopStartTime: 1
+  loopEndTime: 11.24
   startAtLoopPoint: 0
   testLoopPoint: 0
 --- !u!114 &114752249535195896
