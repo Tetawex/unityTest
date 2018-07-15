@@ -10,6 +10,12 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private KeyCode restartKey = KeyCode.R;
 
+        private void Start()
+        {
+            if (!Debug.isDebugBuild)
+                enabled = false;
+        }
+
         void Update()
         {
             if (Input.GetKeyDown(restartKey))

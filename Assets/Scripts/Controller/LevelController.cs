@@ -20,10 +20,13 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private float fightMusicStartDelay;
         [SerializeField]
+        private float standoffMusicStartDelay;
+        [SerializeField]
         private AudioClip enemyLandClip;
 
         public delegate void RoundCompletedEventHandler(int roundNumber);
         public event RoundCompletedEventHandler RoundCompletedEvent;
+        private bool musicStarted;
 
 
         public delegate void PlayerStartedActionEventHandler();
@@ -88,7 +91,7 @@ namespace Assets.Scripts.Controller
 
         public void StartStandoff()
         {
-            standOffMusic.Play();
+            standOffMusic.PlayScheduled(AudioSettings.dspTime + standoffMusicStartDelay);
             playerController.CanDraw = true;
             playerMovement.EnableMovement = true;
             gunController.ResetGun();
@@ -100,13 +103,24 @@ namespace Assets.Scripts.Controller
             fightActive = true;
             roundContainer.CurrentEnemies.ForEach((enemy) => { enemy.Draw(); });
             standOffMusic.Stop();
-            fightMusic.PlayScheduled(AudioSettings.dspTime + fightMusicStartDelay);
+            Invoke("PlayFightMusic", fightMusicStartDelay);
+        }
+
+        void PlayFightMusic()
+        {
+            if (!musicStarted)
+            {
+                fightMusic.Play();
+                musicStarted = true;
+            }
+            else
+                fightMusic.UnPause();
         }
 
         public void EndAction()
         {
             fightActive = false;
-            fightMusic.Stop();
+            fightMusic.Pause();
 
             enemiesRemaining = 0;
             gunController.Holster();
