@@ -63,7 +63,6 @@ namespace Assets.Scripts.Controller
                 roundContainer.SpawnNextRound();
                 Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
 
-                Debug.Log(roundContainer.CurrentRound);
                 RoundCompletedEvent.Invoke(roundContainer.CurrentRound);
             }
             else
