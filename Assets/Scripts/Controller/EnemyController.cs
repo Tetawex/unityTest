@@ -136,7 +136,8 @@ namespace Assets.Scripts.Controller
             if (shot.BodyPart == BodyPart.HEAD)
                 useBrutalDeathAnimation = true;
 
-            Health = Health - shot.Damage;
+            //Health = Health - shot.Damage;
+            Health = 0f;
 
             //animator.Play("Idle");
             //Draw();
