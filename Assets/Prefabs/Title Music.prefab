@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4246004883549486}
   - component: {fileID: 82901135079605544}
   - component: {fileID: 114752249535195896}
-  - component: {fileID: 114012583698811508}
   m_Layer: 0
   m_Name: Title Music
   m_TagString: Untagged
@@ -51,7 +50,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 56dfd2327f6c79941bfac30daf57a8af, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a60cb3bf3cdf9914b9e56786df7a64e1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -137,21 +136,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114012583698811508
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1994852320689418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c22173c448c84a444bb24bac415b8c18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loopStartTime: 1
-  loopEndTime: 11.24
-  startAtLoopPoint: 0
-  testLoopPoint: 0
 --- !u!114 &114752249535195896
 MonoBehaviour:
   m_ObjectHideFlags: 1
