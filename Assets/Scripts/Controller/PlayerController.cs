@@ -90,7 +90,7 @@ namespace Assets.Scripts.Controller
                 }
 
             }
-            if (!dead)
+            if (!dead && gunController.Drawn)
             {
                 Physics.Raycast(ray, out hit);
                 gunController.LookAt(hit.point);
