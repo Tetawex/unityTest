@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Assets.Scripts.Interface;
+using Assets.Scripts.Aesthetic;
 
 namespace Assets.Scripts.Controller
 {
@@ -155,6 +156,9 @@ namespace Assets.Scripts.Controller
                 animator.SetBool("Dead", true);
             else
                 animator.SetBool("BrutallyDead", true);
+
+            GetComponent<FacePlayer>().enabled = false;
+            transform.position += Vector3.up * Random.Range(-.01f, .01f);
         }
     }
 }
