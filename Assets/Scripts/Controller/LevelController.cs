@@ -137,6 +137,7 @@ namespace Assets.Scripts.Controller
 
         public void OnPlayerDeath()
         {
+            audioTime = fightMusic.time;
             fightMusic.Stop();
             playerMovement.EnableMovement = false;
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
