@@ -205,7 +205,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a60cb3bf3cdf9914b9e56786df7a64e1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1ab3a02461edd964c8d2da22766be2c2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -398,8 +398,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextRoundTime: 1
-  standoffStartTime: 1.25
+  standoffStartTime: 0.75
   standOffMusic: {fileID: 82935674350890300}
   fightMusic: {fileID: 82524960462476648}
-  fightMusicStartDelay: 1
+  fightMusicStartDelay: 0.75
+  standoffMusicStartDelay: 0
   enemyLandClip: {fileID: 8300000, guid: e86a402fab9c06f4bbf5e20e59179558, type: 3}
