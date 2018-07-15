@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4706623902892412}
   - component: {fileID: 82524960462476648}
+  - component: {fileID: 114435317823829984}
   m_Layer: 0
   m_Name: Fight Music
   m_TagString: Untagged
@@ -302,7 +303,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a60cb3bf3cdf9914b9e56786df7a64e1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -386,6 +387,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114435317823829984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492340074974818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22173c448c84a444bb24bac415b8c18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopStartTime: 0.42204082
+  loopEndTime: 57.542065
+  startAtLoopPoint: 0
+  testLoopPoint: 0
 --- !u!114 &114620839235061044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -402,5 +418,5 @@ MonoBehaviour:
   standOffMusic: {fileID: 82935674350890300}
   fightMusic: {fileID: 82524960462476648}
   fightMusicStartDelay: 0.75
-  standoffMusicStartDelay: 0
+  standoffMusicStartDelay: 0.75
   enemyLandClip: {fileID: 8300000, guid: e86a402fab9c06f4bbf5e20e59179558, type: 3}

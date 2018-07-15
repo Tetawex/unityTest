@@ -33,7 +33,7 @@ namespace Assets.Scripts.Controller
         }
         public void PlayHitSound(float volumeScale = 1)
         {
-            audioSource.PlayOneShot(hitClip, volumeScale);
+            audioSource.PlayOneShot(hitClip, .75f);
         }
         public void PlayBounceSound(float volumeScale = 1)
         {

@@ -9,6 +9,8 @@ namespace Assets.Scripts.Controller
 {
     public class LevelController : MonoBehaviour
     {
+        static float audioTime;
+
         [SerializeField]
         private float nextRoundTime;
         [SerializeField]
@@ -110,6 +112,7 @@ namespace Assets.Scripts.Controller
         {
             if (!musicStarted)
             {
+                fightMusic.time = audioTime;
                 fightMusic.Play();
                 musicStarted = true;
             }
@@ -120,6 +123,7 @@ namespace Assets.Scripts.Controller
         public void EndAction()
         {
             fightActive = false;
+            audioTime = fightMusic.time;
             fightMusic.Pause();
 
             enemiesRemaining = 0;
@@ -133,6 +137,7 @@ namespace Assets.Scripts.Controller
 
         public void OnPlayerDeath()
         {
+            audioTime = fightMusic.time;
             fightMusic.Stop();
             playerMovement.EnableMovement = false;
             ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyShotPlayer());
