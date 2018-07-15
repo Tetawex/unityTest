@@ -15,6 +15,10 @@ namespace Assets.Scripts.Controller
         public delegate void RoundCompletedEventHandler(int roundNumber);
         public event RoundCompletedEventHandler RoundCompletedEvent;
 
+
+        public delegate void PlayerStartedActionEventHandler();
+        public event PlayerStartedActionEventHandler PlayerStartedActionEvent;
+
         bool fightActive = false;
         public bool FightActive
         {
@@ -59,6 +63,7 @@ namespace Assets.Scripts.Controller
                 roundContainer.SpawnNextRound();
                 Invoke("StartStandoff", 1f); //TODO Serialize or trigger via animationevent when enemies land
 
+                Debug.Log(roundContainer.CurrentRound);
                 RoundCompletedEvent.Invoke(roundContainer.CurrentRound);
             }
             else
@@ -74,6 +79,7 @@ namespace Assets.Scripts.Controller
 
         public void StartAction()
         {
+            PlayerStartedActionEvent.Invoke();
             fightActive = true;
             roundContainer.CurrentEnemies.ForEach((enemy) => { enemy.Draw(); });
         }

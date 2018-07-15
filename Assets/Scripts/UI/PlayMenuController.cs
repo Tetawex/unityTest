@@ -13,9 +13,13 @@ namespace Assets.Scripts.UI
 
         private Button nextButton, restartButton, quitButton;
         private Text levelCompletedText;
+        private Text roundText;
+
         private GameObject levelCompleteWindow;
+        private GameObject hintWindow;
 
         private GameController gameController;
+        private LevelController levelController;
 
         [SerializeField]
         private float clickCooldown = 1f;
@@ -24,12 +28,17 @@ namespace Assets.Scripts.UI
         void Start()
         {
             gameController = Utils.getSingleton<GameController>();
+            levelController = Utils.getSingleton<LevelController>();
+
             gameController.LevelCompletedEvent += ShowLevelCompletedWindow;
+            levelController.RoundCompletedEvent += SetRoundNumber;
+            levelController.PlayerStartedActionEvent += () => { SetHintWindowVisibility(false); };
 
             BindViews();
             BindListeners();
 
-            levelCompleteWindow.SetActive(false);
+            SetHintWindowVisibility(true);
+            SetLevelCompletedWindowVisibility(false);
             SetButtonsEnabled(false);
         }
 
@@ -46,8 +55,12 @@ namespace Assets.Scripts.UI
                 nextButton = GameObject.Find("NextButton").GetComponent<Button>();
                 restartButton = GameObject.Find("RestartButton").GetComponent<Button>();
                 quitButton = GameObject.Find("QuitButton").GetComponent<Button>();
+
                 levelCompletedText = GameObject.Find("LevelCompletedText").GetComponent<Text>();
+                roundText = GameObject.Find("RoundText").GetComponent<Text>();
+
                 levelCompleteWindow = GameObject.Find("WindowWithVerticalLayout");
+                hintWindow = GameObject.Find("HintWindow");
             }
             catch
             {
@@ -65,6 +78,10 @@ namespace Assets.Scripts.UI
         {
             SetButtonsEnabled();
         }
+        public void SetRoundNumber(int number)
+        {
+            roundText.text = Strings.Round + " " + number;
+        }
         public void SetButtonsEnabled(bool enabled = true)
         {
             restartButton.interactable = enabled;
@@ -74,6 +91,10 @@ namespace Assets.Scripts.UI
         public void SetLevelCompletedWindowVisibility(bool visibility = true)
         {
             levelCompleteWindow.SetActive(visibility);
+        }
+        public void SetHintWindowVisibility(bool visibility = true)
+        {
+            hintWindow.SetActive(visibility);
         }
         public void SetToggleUIVisibility(bool visibility = true)
         {
