@@ -108,6 +108,8 @@ namespace Assets.Scripts.UI
             {
                 if (gameController.levelNumber != 5)
                     nextButton.gameObject.SetActive(true);
+                else
+                    nextButton.gameObject.SetActive(false);
                 levelCompletedText.text = Strings.LevelCompletedSuccess;
             }
             else
