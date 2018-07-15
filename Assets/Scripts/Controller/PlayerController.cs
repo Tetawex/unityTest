@@ -56,6 +56,9 @@ namespace Assets.Scripts.Controller
         // Update is called once per frame
         void Update()
         {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            //Raycasting
+            RaycastHit hit;
             if (Input.GetMouseButtonDown(0) && CanDraw && !Dead)
             {
                 if (!gunController.Drawn)
@@ -68,9 +71,6 @@ namespace Assets.Scripts.Controller
                     //    levelController.StartAction();
                     gunController.Shoot();
 
-                    //Raycasting
-                    RaycastHit hit;
-                    Ray ray = camera.ScreenPointToRay(Input.mousePosition);
 
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, shootMask))
                     {
@@ -81,16 +81,19 @@ namespace Assets.Scripts.Controller
                             entity.ReceiveShot(new Shot(gunController.Damage, hit.point, transform.position));
                         }
 
-                        Debug.Log(hit.point);
-                        gunController.LookAt(hit.point);
+                        //Debug.Log(hit.point);
+                        //gunController.LookAt(hit.point);
                     }
                     else
                     {
-                        Physics.Raycast(ray, out hit);
-                        gunController.LookAt(hit.point);
                     }
                 }
 
+            }
+            if (!dead)
+            {
+                Physics.Raycast(ray, out hit);
+                gunController.LookAt(hit.point);
             }
         }
 
