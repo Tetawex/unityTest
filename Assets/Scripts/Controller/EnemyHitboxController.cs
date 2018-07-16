@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Controller;
 using Assets.Scripts.Interface;
 using Assets.Scripts.Model;
+using Assets.Scripts.Util;
 using System.Collections.Generic;
 using UnityEngine;
 namespace Assets.Scripts.Controller
@@ -27,14 +28,17 @@ namespace Assets.Scripts.Controller
         public void ReceiveShot(Shot shot)
         {
             Root.ReceiveShot(new LocationalShot(bodyPartMultiplierDictionary[bodyPart], bodyPart, shot));
-            if (bodyPart == BodyPart.ARMORED_TORSO);
-                //bodyPart = BodyPart.TORSO;
+            if (bodyPart == BodyPart.ARMORED_TORSO) ;
+            //bodyPart = BodyPart.TORSO;
         }
 
         // Use this for initialization
         void Start()
         {
-
+            if (PlatformTypeUtil.IsMobileplatform())
+            {
+                transform.localScale *= 1.7f;
+            }
         }
 
         // Update is called once per frame

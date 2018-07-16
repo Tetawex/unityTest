@@ -22,30 +22,49 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float cameraAngleExtreme;
 
+    private bool useTiltControls = true;
+
     float snapBackTimer;
 
     LevelController levelController;
     PlayerController playerController;
 
     public Camera camera;
-    
-	void Start ()
+
+    void Start()
     {
+        useTiltControls = PlatformTypeUtil.IsMobileplatform();
+
         levelController = Utils.getSingleton<LevelController>();
         playerController = Utils.getSingleton<PlayerController>();
         initialPosition = transform.position;
         camera = GetComponentInChildren<Camera>();
     }
-	
-	void Update ()
+
+    void Update()
     {
+        Debug.Log("Reeee " + Input.acceleration);
         if (playerController.Dead)
             return;
+
         float direction = 0f;
-        if (Input.GetKey(KeyCode.A))
-            direction -= 1f;
-        if (Input.GetKey(KeyCode.D))
-            direction += 1f;
+        if (useTiltControls)
+        {
+            float xAccel = Input.acceleration.x;
+            if (xAccel < -0.05f || xAccel > 0.05f)
+            {
+                direction = 3 * xAccel;
+                if (direction > 1)
+                    direction = 1f;
+            }
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.A))
+                direction -= 1f;
+            if (Input.GetKey(KeyCode.D))
+                direction += 1f;
+        }
         if (EnableMovement && levelController.FightActive)
         {
             if (direction != 0f)
