@@ -259,6 +259,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4226548271964136}
+  - component: {fileID: 114436657563017668}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -1689,6 +1690,19 @@ Transform:
   m_Father: {fileID: 4226548271964136}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114436657563017668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1399908801607986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 242b8daec6ee088469b4a8ee64f86693, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: -1, y: 0, z: 0}
+  multiplier: 0.2
 --- !u!212 &212008867395789030
 SpriteRenderer:
   m_ObjectHideFlags: 1

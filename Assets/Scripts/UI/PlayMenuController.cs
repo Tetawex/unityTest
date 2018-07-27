@@ -106,7 +106,7 @@ namespace Assets.Scripts.UI
             Invoke("EnableButtons", clickCooldown);
             if (win)
             {
-                if (gameController.levelNumber != 5)
+                if (gameController.levelNumber != 7)
                     nextButton.gameObject.SetActive(true);
                 else
                     nextButton.gameObject.SetActive(false);
