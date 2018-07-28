@@ -112,7 +112,7 @@ namespace Assets.Scripts.Controller
         {
             if (!fightActive)
                 return;
-            if (!musicStarted)
+            if (!musicStarted || Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 fightMusic.time = audioTime;
                 fightMusic.Play();
@@ -126,7 +126,11 @@ namespace Assets.Scripts.Controller
         {
             fightActive = false;
             audioTime = fightMusic.time;
-            fightMusic.Pause();
+
+            if (Application.platform != RuntimePlatform.WebGLPlayer)
+                fightMusic.Pause();
+            else
+                fightMusic.Stop();
 
             enemiesRemaining = 0;
             gunController.Holster();
