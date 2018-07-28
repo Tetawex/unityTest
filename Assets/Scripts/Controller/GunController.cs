@@ -53,6 +53,7 @@ namespace Assets.Scripts.Controller
             turnState += Time.deltaTime * TurnRate;
             if (turnState > 1f)
                 turnState = 1f;
+
             transform.rotation = Quaternion.Slerp(fromRotation, toRotation, turnState);
         }
 
