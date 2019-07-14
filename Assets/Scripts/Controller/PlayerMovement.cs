@@ -21,15 +21,35 @@ public class PlayerMovement : MonoBehaviour
     private float snapBackTime;
     [SerializeField]
     private float cameraAngleExtreme;
+    [SerializeField]
+    private float cursorRotationAdditionMult = 60f;
+    [SerializeField]
+    private float speedToPointRotation = 90f;
+    [SerializeField]
+    private float jumpDuration = .5f;
+    [SerializeField]
+    private float jumpHeight = .5f;
+    [SerializeField]
+    private AnimationCurve jumpCurve;
+    [SerializeField]
+    private AnimationCurve jumpLookCurve;
+    [SerializeField]
+    private float jumpLookExtreme = 40f;
 
-    private bool useTiltControls = true;
+    private bool useTiltControls = false;
 
     float snapBackTimer;
+    float direction;
+    float lastJumpTime = -100f;
+    float initialY;
 
     LevelController levelController;
     PlayerController playerController;
+    Vector3 pointRotation;
 
     public Camera camera;
+
+    public bool IsJumping => Time.time <= lastJumpTime + jumpDuration;
 
     void Start()
     {
@@ -39,15 +59,14 @@ public class PlayerMovement : MonoBehaviour
         playerController = Utils.getSingleton<PlayerController>();
         initialPosition = transform.position;
         camera = GetComponentInChildren<Camera>();
+        initialY = transform.position.y;
     }
 
     void Update()
     {
-        Debug.Log("Reeee " + Input.acceleration);
         if (playerController.Dead)
             return;
-
-        float direction = 0f;
+        
         if (useTiltControls)
         {
             float xAccel = Input.acceleration.x;
@@ -60,10 +79,18 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            direction = 0f;
             if (Input.GetKey(KeyCode.A))
                 direction -= 1f;
             if (Input.GetKey(KeyCode.D))
                 direction += 1f;
+        }
+        if (IsJumping)
+        {
+            var t = (Time.time - lastJumpTime) / jumpDuration;
+            transform.position = new Vector3(transform.position.x,
+                initialY + jumpCurve.Evaluate(t) * jumpHeight,
+                transform.position.z);
         }
         if (EnableMovement && levelController.FightActive)
         {
@@ -77,6 +104,8 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = new Vector3(newX, transform.position.y, transform.position.z);
 
             }
+            if (!IsJumping && Input.GetKeyDown(KeyCode.Space))
+                Jump();
         }
         else
         {
@@ -89,5 +118,26 @@ public class PlayerMovement : MonoBehaviour
         float distance = xBounds.y;
         float cameraAngle = Mathf.Lerp(0f, cameraAngleExtreme, Mathf.Abs(transform.position.x) / distance) * -Mathf.Sign(transform.position.x);
         transform.localEulerAngles = Vector3.up * cameraAngle;
+
+        var screenRes = new Vector2(Screen.width, Screen.height);
+        var cursorPos = ((Vector2)Input.mousePosition - (screenRes / 2f));
+        cursorPos /= screenRes / 2f;
+        var cursorRot = new Vector3(-cursorPos.y, cursorPos.x) * cursorRotationAdditionMult;
+
+        pointRotation = Vector3.MoveTowards(pointRotation, cursorRot, speedToPointRotation * Time.deltaTime * (cursorRot - pointRotation).magnitude);
+        transform.localEulerAngles += pointRotation;
+
+        if (IsJumping)
+        {
+            var t = (Time.time - lastJumpTime) / jumpDuration;
+            var jumpAngleAddition = jumpLookCurve.Evaluate(t) * jumpLookExtreme;
+            transform.localEulerAngles += Vector3.right * jumpAngleAddition;
+        }
+    }
+
+
+    void Jump()
+    {
+        lastJumpTime = Time.time;
     }
 }

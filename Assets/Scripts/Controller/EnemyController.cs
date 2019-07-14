@@ -94,7 +94,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead || Utils.getSingleton<PlayerController>().Dead)
                 return;
-            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange));
+            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / 1.5f);
 
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");
@@ -108,7 +108,7 @@ namespace Assets.Scripts.Controller
 
         private void StartDrawing()
         {
-            Invoke("Shoot", MathHelper.randomRangeFromVector(initialFireDelayRange));
+            Invoke("Shoot", MathHelper.randomRangeFromVector(initialFireDelayRange) / 2f);
 
             enemySoundPlayer.PlayDrawSound();
             animator.SetTrigger("Draw");

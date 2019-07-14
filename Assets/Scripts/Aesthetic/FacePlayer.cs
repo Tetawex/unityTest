@@ -8,6 +8,9 @@ namespace Assets.Scripts.Aesthetic
 {
     public class FacePlayer : MonoBehaviour
     {
+        [SerializeField]
+        private bool lockX = false;
+
         PlayerMovement playerMovement;
         PlayerController playerController;
 
@@ -20,7 +23,12 @@ namespace Assets.Scripts.Aesthetic
         void LateUpdate()
         {
             if (!playerController.Dead)
-                transform.rotation = playerMovement.transform.rotation;
+            {
+                var newRotation = playerMovement.transform.eulerAngles;
+                if (lockX)
+                    newRotation.x = transform.eulerAngles.x;
+                transform.eulerAngles = newRotation;
+            }
         }
     }
 }
