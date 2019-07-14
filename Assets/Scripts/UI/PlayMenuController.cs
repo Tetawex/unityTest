@@ -104,18 +104,45 @@ namespace Assets.Scripts.UI
         {
             SetLevelCompletedWindowVisibility(true);
             Invoke("EnableButtons", clickCooldown);
+            //A separate iron check
+            if (GameController.IRON_MODE_ENABLED)
+            {
+                quitButton.onClick.RemoveAllListeners();
+                quitButton.onClick.AddListener(() => { SceneManager.LoadScene("MainMenu", LoadSceneMode.Single); });
+            }
             if (win)
             {
-                if (gameController.levelNumber != 5)
+                if (gameController.levelNumber != 7)
                     nextButton.gameObject.SetActive(true);
+                //The game ended
                 else
                     nextButton.gameObject.SetActive(false);
                 levelCompletedText.text = Strings.LevelCompletedSuccess;
+
+                //A separate iron check
+                if (GameController.IRON_MODE_ENABLED)
+                {
+                    if (gameController.levelNumber == 7)
+                    {
+                        levelCompletedText.text = Strings.IronChallengeSuccess;
+                        PlayerPrefs.SetInt("iron", 1);
+                        PlayerPrefs.Save();
+                    }
+
+                    restartButton.gameObject.SetActive(false);
+                }
             }
             else
             {
                 nextButton.gameObject.SetActive(false);
                 levelCompletedText.text = Strings.LevelCompletedFailure;
+
+                //A separate iron check
+                if (GameController.IRON_MODE_ENABLED)
+                {
+                    levelCompletedText.text = Strings.IronChallengeFailure;
+                    restartButton.gameObject.SetActive(false);
+                }
             }
         }
     }

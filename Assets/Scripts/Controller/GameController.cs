@@ -11,6 +11,8 @@ namespace Assets.Scripts.Controller
 {
     public class GameController : MonoBehaviour, IDrawShootMessageTarget
     {
+        public static bool IRON_MODE_ENABLED = false;
+
         [SerializeField]
         public int levelNumber = 0;//TODO assign dynamically somehow
 
