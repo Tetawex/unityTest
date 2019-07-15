@@ -357,7 +357,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6, z: 0.6}
+  m_Size: {x: 0.4, y: 0.4, z: 0.2}
   m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!114 &114142292275106830
 MonoBehaviour:
@@ -376,7 +376,7 @@ MonoBehaviour:
   snapBackTime: 0.75
   cameraAngleExtreme: 20
   cursorRotationAdditionMult: 5
-  speedToPointRotation: 15
+  speedToPointRotation: 12
   jumpDuration: 0.69
   jumpHeight: 3
   jumpCurve:
@@ -418,12 +418,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 3.112836
-      outSlope: 3.112836
+      inSlope: 5.188888
+      outSlope: 5.188888
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.07032349
+      outWeight: 0.042194095
     - serializedVersion: 3
       time: 0.5
       value: 1
@@ -454,7 +454,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpLookExtreme: 20
+  jumpLookExtreme: 15
   camera: {fileID: 0}
 --- !u!1 &1666546135998992
 GameObject:
