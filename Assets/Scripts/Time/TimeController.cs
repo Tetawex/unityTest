@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Util;
+using Assets.Scripts.Controller;
 
 public class TimeController : MonoBehaviour
 {
@@ -35,13 +36,20 @@ public class TimeController : MonoBehaviour
     Camera mainCamera;
     private float cameraOriginalFOV;
     float t = 0f;
+    public bool isTransitioning => (IsFocusing && t < .5f) || (!IsFocusing && t > .5f);
     private bool buttonPressed = false;
     private PlayerMovement playerMovement;
     private float initialDrainSpeed;
     private float drainSpeedRechargeTimer = 0f;
 
     private float charge = 100f;
-    public float Charge => charge;
+    public float Charge
+    {
+        get { return charge; }
+        set { charge = value; if (value <= 0f) overdrawn = true; else if (value >= 100f) overdrawn = false; }
+    }
+    private bool overdrawn;
+    public bool Overdrawn => overdrawn;
 
     void Start()
     {
@@ -54,11 +62,11 @@ public class TimeController : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && drainSpeedRechargeTimer <= 0f)
+        if (Input.GetMouseButton(1) && drainSpeedRechargeTimer <= 0f && !Overdrawn)
         {
             buttonPressed = true;
         }
-        if (charge <= 0f || !Input.GetMouseButton(1))
+        if (Charge <= 0f || !Input.GetMouseButton(1))
             buttonPressed = false;
 
         t = Mathf.MoveTowards(t, IsFocusing ? 1f : 0f, Time.unscaledDeltaTime / lerpTime);
@@ -73,20 +81,22 @@ public class TimeController : MonoBehaviour
         }
         else
             drainSpeed = Mathf.MoveTowards(drainSpeed, initialDrainSpeed, drainSpeedDec * Time.unscaledDeltaTime);
-        charge = Mathf.MoveTowards(charge, IsFocusing ? 0f : 100f, (IsFocusing ? drainSpeed : rechargeSpeed) * Time.fixedDeltaTime);
+
+        var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 4f;
+        Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : 100f, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
     }
 
     public void RegisterShot(bool isHit)
     {
         if (IsFocusing)
         {
-            charge += isHit ? slowKillDelta : slowMissDelta;
+            Charge += isHit ? slowKillDelta : slowMissDelta;
             drainSpeed += drainSpeedShotDelta;
         }
         else
-            charge += isHit ? normalKillDelta : 0f;
-        charge = Mathf.Clamp(charge, 0f, 100f);
+            Charge += isHit ? normalKillDelta : 0f;
+        Charge = Mathf.Clamp(Charge, 0f, 100f);
     }
 
-    public bool IsFocusing => buttonPressed && charge > 0f && playerMovement.CanFocus;
+    public bool IsFocusing => buttonPressed && Charge > 0f && playerMovement.CanFocus;
 }

@@ -64,7 +64,7 @@ namespace Assets.Scripts.Controller
             RaycastHit hit;
             var didRaycastHitEnemy = Physics.SphereCast(ray.origin, shootSphereCastWidth, ray.direction, out hit, Mathf.Infinity, shootMask);
             cursorController.isOverEnemy = didRaycastHitEnemy;
-            if (Input.GetMouseButtonDown(0) && CanDraw && !Dead)
+            if (Input.GetMouseButtonDown(0) && CanDraw && !Dead && !Utils.getSingleton<TimeController>().isTransitioning)
             {
                 if (!gunController.Drawn)
                 {

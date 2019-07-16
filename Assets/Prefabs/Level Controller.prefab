@@ -467,12 +467,12 @@ MonoBehaviour:
   focusMult: 0.25
   lerpTime: 0.25
   cameraZoomedFOV: 65
-  drainSpeed: 25
-  drainSpeedAcc: 20
-  drainSpeedDec: 50100
-  drainSpeedShotDelta: 30
+  drainSpeed: 10
+  drainSpeedAcc: 5
+  drainSpeedDec: 10
+  drainSpeedShotDelta: 2.5
   drainSpeedRechargeDelay: 0.25
   rechargeSpeed: 20
-  slowKillDelta: 15
+  slowKillDelta: -15
   slowMissDelta: -20
   normalKillDelta: 10

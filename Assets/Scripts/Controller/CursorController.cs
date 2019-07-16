@@ -11,6 +11,8 @@ public class CursorController : MonoBehaviour
     [SerializeField]
     private float movementMultOverEnemy = 2f;
     [SerializeField]
+    private float movementMultOverEnemyFocus = 2f;
+    [SerializeField]
     private float movementAcc = 1.2f;
     [SerializeField]
     private float relativeFollowSpeed = .1f;
@@ -49,7 +51,7 @@ public class CursorController : MonoBehaviour
         var cursorPos = CanvasPosition;
 
         var timeController = Utils.getSingleton<TimeController>();
-        var currentMovementMult = isOverEnemy && timeController.IsFocusing ? movementMultOverEnemy : movementMult;
+        var currentMovementMult = isOverEnemy ? (timeController.IsFocusing ? movementMultOverEnemyFocus :movementMultOverEnemy) : movementMult;
 
         var inputVector = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         if (inputVector.x != 0f)

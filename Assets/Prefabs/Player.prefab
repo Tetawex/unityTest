@@ -378,7 +378,7 @@ MonoBehaviour:
   cameraAngleExtreme: 20
   cursorRotationAdditionMult: 2
   speedToPointRotation: 12
-  jumpDuration: 0.69
+  jumpDuration: 0.6
   jumpHeight: 3
   jumpCurve:
     serializedVersion: 2
