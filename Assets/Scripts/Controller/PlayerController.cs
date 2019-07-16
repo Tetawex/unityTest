@@ -56,9 +56,12 @@ namespace Assets.Scripts.Controller
         // Update is called once per frame
         void Update()
         {
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            var cursorController = Utils.getSingleton<CursorController>();
+            Ray ray = camera.ScreenPointToRay(cursorController.ScreenPosition);
             //Raycasting
             RaycastHit hit;
+            var didRaycastHitEnemy = Physics.Raycast(ray, out hit, Mathf.Infinity, shootMask);
+            cursorController.isOverEnemy = didRaycastHitEnemy;
             if (Input.GetMouseButtonDown(0) && CanDraw && !Dead)
             {
                 if (!gunController.Drawn)
@@ -70,9 +73,8 @@ namespace Assets.Scripts.Controller
                     //if (!levelController.FightActive)
                     //    levelController.StartAction();
                     gunController.Shoot();
-
-
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, shootMask))
+                    
+                    if (didRaycastHitEnemy)
                     {
                         var objectHit = hit.collider.gameObject;
                         var entity = objectHit.GetComponent<IDamageableEntity>();
@@ -92,7 +94,7 @@ namespace Assets.Scripts.Controller
             }
             if (!dead && gunController.Drawn)
             {
-                Physics.Raycast(ray, out hit);
+                Physics.Raycast(ray, out hit, Mathf.Infinity);
                 gunController.LookAt(hit.point);
             }
         }

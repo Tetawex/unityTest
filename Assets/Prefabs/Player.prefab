@@ -375,7 +375,7 @@ MonoBehaviour:
   xBounds: {x: -7.5, y: 7.5}
   snapBackTime: 0.75
   cameraAngleExtreme: 20
-  cursorRotationAdditionMult: 5
+  cursorRotationAdditionMult: 2
   speedToPointRotation: 12
   jumpDuration: 0.69
   jumpHeight: 3

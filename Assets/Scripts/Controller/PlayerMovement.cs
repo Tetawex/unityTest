@@ -120,7 +120,8 @@ public class PlayerMovement : MonoBehaviour
         transform.localEulerAngles = Vector3.up * cameraAngle;
 
         var screenRes = new Vector2(Screen.width, Screen.height);
-        var cursorPos = ((Vector2)Input.mousePosition - (screenRes / 2f));
+        var cursorController = Utils.getSingleton<CursorController>();
+        var cursorPos = ((Vector2)cursorController.ScreenPosition - (screenRes / 2f));
         cursorPos /= screenRes / 2f;
         var cursorRot = new Vector3(-cursorPos.y, cursorPos.x) * cursorRotationAdditionMult;
 
