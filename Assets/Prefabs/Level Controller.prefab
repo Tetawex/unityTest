@@ -475,4 +475,4 @@ MonoBehaviour:
   rechargeSpeed: 20
   slowKillDelta: -15
   slowMissDelta: -20
-  normalKillDelta: 10
+  normalKillDelta: 15

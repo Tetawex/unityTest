@@ -35,6 +35,15 @@ public class PlayerMovement : MonoBehaviour
     private AnimationCurve jumpLookCurve;
     [SerializeField]
     private float jumpLookExtreme = 40f;
+    [SerializeField]
+    private AnimationCurve gunRecoilCurve;
+    [SerializeField]
+    private float gunRecoilTime;
+    [SerializeField]
+    private float gunRecoilExtreme;
+
+    private float gunRecoilTimer = 999f;
+    public void TriggerGunRecoil() { gunRecoilTimer = 0f; }
 
     private bool useTiltControls = false;
 
@@ -131,11 +140,21 @@ public class PlayerMovement : MonoBehaviour
         pointRotation = Vector3.MoveTowards(pointRotation, cursorRot, speedToPointRotation * Time.deltaTime * (cursorRot - pointRotation).magnitude);
         transform.localEulerAngles += pointRotation;
 
+        // Jump animation
         if (IsJumping)
         {
             var t = (Time.time - lastJumpTime) / jumpDuration;
             var jumpAngleAddition = jumpLookCurve.Evaluate(t) * jumpLookExtreme;
             transform.localEulerAngles += Vector3.right * jumpAngleAddition;
+        }
+
+        // Recoil animation
+        if (gunRecoilTimer < gunRecoilTime)
+        {
+            gunRecoilTimer += Time.deltaTime;
+            var t = gunRecoilTimer / gunRecoilTime;
+            var recoilAngleAddition = gunRecoilCurve.Evaluate(t) * gunRecoilExtreme;
+            transform.localEulerAngles += Vector3.right * -recoilAngleAddition;
         }
     }
 

@@ -456,6 +456,41 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   jumpLookExtreme: 15
+  gunRecoilCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0025024414
+      inSlope: 4.5607157
+      outSlope: 4.5607157
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.06680731
+    - serializedVersion: 3
+      time: 0.21292725
+      value: 0.99253845
+      inSlope: -3.3877685
+      outSlope: -3.3877685
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.056483623
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.11205067
+      outSlope: 0.11205067
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08398722
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gunRecoilTime: 0.25
+  gunRecoilExtreme: 0.75
   camera: {fileID: 0}
 --- !u!1 &1666546135998992
 GameObject:
