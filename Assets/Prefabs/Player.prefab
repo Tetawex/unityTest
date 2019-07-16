@@ -323,6 +323,7 @@ MonoBehaviour:
   shootMask:
     serializedVersion: 2
     m_Bits: 512
+  shootSphereCastWidth: 0.3
   HasProtection: 0
   BounceAudioSource: {fileID: 82699011473447226}
   HitAudioSource: {fileID: 82254864820341362}
@@ -357,8 +358,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.3, z: 0.12}
-  m_Center: {x: 0, y: -0.3, z: 0.06}
+  m_Size: {x: 0.3, y: 0.5, z: 0.12}
+  m_Center: {x: 0, y: -0.2, z: 0.06}
 --- !u!114 &114142292275106830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,7 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootAudioSource: {fileID: 82209817427106972}
   drawAudioSource: {fileID: 82374058951014498}
-  Cooldown: 0.1
+  Cooldown: 0.25
   Damage: 100
   TurnRate: 8
   turnState: 0

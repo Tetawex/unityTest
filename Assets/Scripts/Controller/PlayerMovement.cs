@@ -94,18 +94,21 @@ public class PlayerMovement : MonoBehaviour
         }
         if (EnableMovement && levelController.FightActive)
         {
-            if (direction != 0f)
+            if (!Utils.getSingleton<TimeController>().IsFocusing)
             {
-                //if (!levelController.FightActive)
-                //    playerController.Draw();
+                if (direction != 0f)
+                {
+                    //if (!levelController.FightActive)
+                    //    playerController.Draw();
 
-                var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
-                newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
-                transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                    var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
+                    newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
+                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
 
+                }
+                if (!IsJumping && Input.GetKeyDown(KeyCode.Space))
+                    Jump();
             }
-            if (!IsJumping && Input.GetKeyDown(KeyCode.Space))
-                Jump();
         }
         else
         {
@@ -135,6 +138,8 @@ public class PlayerMovement : MonoBehaviour
             transform.localEulerAngles += Vector3.right * jumpAngleAddition;
         }
     }
+
+    public bool CanFocus => EnableMovement && levelController.FightActive && !IsJumping;
 
 
     void Jump()

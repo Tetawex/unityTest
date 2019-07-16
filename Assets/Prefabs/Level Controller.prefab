@@ -464,4 +464,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a885bd150104c4bbc868254b265432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focusMult: 0.35
+  focusMult: 0.25
+  lerpTime: 0.25
+  cameraZoomedFOV: 65
+  drainSpeed: 25
+  drainSpeedAcc: 20
+  drainSpeedDec: 50100
+  drainSpeedShotDelta: 30
+  drainSpeedRechargeDelay: 0.25
+  rechargeSpeed: 20
+  slowKillDelta: 15
+  slowMissDelta: -20
+  normalKillDelta: 10

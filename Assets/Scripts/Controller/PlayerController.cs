@@ -10,6 +10,8 @@ namespace Assets.Scripts.Controller
     {
         [SerializeField]
         private LayerMask shootMask;
+        [SerializeField]
+        private float shootSphereCastWidth = .3f;
         private GunController gunController;
         private LevelController levelController;
         private new Camera camera;
@@ -60,7 +62,7 @@ namespace Assets.Scripts.Controller
             Ray ray = camera.ScreenPointToRay(cursorController.ScreenPosition);
             //Raycasting
             RaycastHit hit;
-            var didRaycastHitEnemy = Physics.Raycast(ray, out hit, Mathf.Infinity, shootMask);
+            var didRaycastHitEnemy = Physics.SphereCast(ray.origin, shootSphereCastWidth, ray.direction, out hit, Mathf.Infinity, shootMask);
             cursorController.isOverEnemy = didRaycastHitEnemy;
             if (Input.GetMouseButtonDown(0) && CanDraw && !Dead)
             {
@@ -89,12 +91,13 @@ namespace Assets.Scripts.Controller
                     else
                     {
                     }
+                    Utils.getSingleton<TimeController>().RegisterShot(didRaycastHitEnemy);
                 }
 
             }
             if (!dead && gunController.Drawn)
             {
-                Physics.Raycast(ray, out hit, Mathf.Infinity);
+                Physics.SphereCast(ray.origin, shootSphereCastWidth, ray.direction, out hit, Mathf.Infinity);
                 gunController.LookAt(hit.point);
             }
         }

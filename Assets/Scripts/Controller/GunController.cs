@@ -45,7 +45,7 @@ namespace Assets.Scripts.Controller
         void Update()
         {
             //Manage cooldown
-            currentCooldown += Time.deltaTime;
+            currentCooldown += Time.unscaledDeltaTime;
             if (currentCooldown > Cooldown)
                 currentCooldown = Cooldown;
 

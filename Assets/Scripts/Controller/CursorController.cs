@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Util;
 
 public class CursorController : MonoBehaviour
 {
@@ -21,11 +22,12 @@ public class CursorController : MonoBehaviour
     private Color normalColor = Color.white;
     [SerializeField]
     private Color enemyColor = Color.white;
+    [SerializeField]
+    private Image image;
 
     private RectTransform rectTransform;
     private Canvas parentCanvas;
     private CanvasScaler parentScaler;
-    private Image image;
 
     public bool isOverEnemy;
     private float currentFollowSpeed;
@@ -37,7 +39,6 @@ public class CursorController : MonoBehaviour
         rectTransform = (RectTransform)transform;
         parentCanvas = transform.parent.GetComponent<Canvas>();
         parentScaler = transform.parent.GetComponent<CanvasScaler>();
-        image = GetComponent<Image>();
         currentFollowSpeed = relativeFollowSpeed;
     }
 
@@ -46,8 +47,10 @@ public class CursorController : MonoBehaviour
         // Update position
         var canvasResolution = parentScaler.referenceResolution;
         var cursorPos = CanvasPosition;
-        
-        var currentMovementMult = isOverEnemy ? movementMultOverEnemy : movementMult;
+
+        var timeController = Utils.getSingleton<TimeController>();
+        var currentMovementMult = isOverEnemy && timeController.IsFocusing ? movementMultOverEnemy : movementMult;
+
         var inputVector = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         if (inputVector.x != 0f)
             cursorPos.x += Mathf.Pow(Mathf.Abs(inputVector.x), movementAcc) * currentMovementMult * Mathf.Sign(inputVector.x);

@@ -139,6 +139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 605876821}
     m_Modifications:
+    - target: {fileID: 1637265597636482, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.63
@@ -239,6 +243,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 605876821}
     m_Modifications:
+    - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.26
@@ -723,9 +731,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2077048087}
   - {fileID: 605876821}
   - {fileID: 1023169911}
+  - {fileID: 2077048087}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -815,6 +823,10 @@ PrefabInstance:
     - target: {fileID: 1637265597636482, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
       propertyPath: m_Name
       value: Burst Bun (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
       propertyPath: m_LocalPosition.x
@@ -992,6 +1004,10 @@ PrefabInstance:
     - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_Name
       value: Spread Bun (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1274,6 +1290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Big Bun (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.64
@@ -1513,7 +1533,7 @@ Transform:
   - {fileID: 601490742}
   - {fileID: 1407145331}
   m_Father: {fileID: 184375074}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &614024663
 PrefabInstance:
@@ -1685,6 +1705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Burst Bun (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.33
@@ -1743,6 +1767,10 @@ PrefabInstance:
     - target: {fileID: 1637265597636482, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
       propertyPath: m_Name
       value: Burst Bun (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: 8c19fabadf1cea0418e8a9fd7a282785, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1993,7 +2021,7 @@ Transform:
   - {fileID: 167637190}
   - {fileID: 2144190870}
   m_Father: {fileID: 184375074}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1032033646 stripped
 Transform:
@@ -3098,6 +3126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spread Bun (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.92
@@ -3331,6 +3363,10 @@ PrefabInstance:
     - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_Name
       value: Spread Bun (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: e62ecf5171ff24a4c8499f8deb65a3de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3932,6 +3968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Big Bun (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1637265597636482, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4446936774024302, guid: d5d1f421464ede14f92862e153a0fae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.61
@@ -4264,7 +4304,7 @@ Transform:
   - {fileID: 1397919698}
   - {fileID: 1943064000}
   m_Father: {fileID: 184375074}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2110459651
 GameObject:
