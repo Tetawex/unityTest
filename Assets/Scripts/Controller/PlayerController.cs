@@ -98,12 +98,13 @@ namespace Assets.Scripts.Controller
                             entity.ReceiveShot(new Shot(gunController.Damage, hit.point, transform.position));
                         }
 
-                        if (timeController.IsFocusing)
-                            enemiesKilledInFocus++;
-                        else
+                        if (!timeController.IsFocusing)
                             enemiesKilledInFocus = 0;
                         CameraShake.instance.shakeSpeed = shakeSpeed * (shakeSpeedPerKill * (float)enemiesKilledInFocus);
                         CameraShake.instance.setScreenShake(killShake + (focusShakePerKill * (float)enemiesKilledInFocus));
+
+                        if (timeController.IsFocusing)
+                            enemiesKilledInFocus++;
 
                         //Debug.Log(hit.point);
                         //gunController.LookAt(hit.point);

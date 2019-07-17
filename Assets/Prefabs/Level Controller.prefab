@@ -469,7 +469,7 @@ MonoBehaviour:
   lerpTime: 0.25
   cameraZoomedFOV: 65
   drainSpeed: 10
-  drainSpeedAcc: 5
+  drainSpeedAcc: 7
   drainSpeedDec: 10
   drainSpeedShotDelta: 0
   drainSpeedRechargeDelay: 0.25

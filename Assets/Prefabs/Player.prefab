@@ -325,9 +325,9 @@ MonoBehaviour:
     m_Bits: 512
   shootSphereCastWidth: 0.3
   shootShake: 0.1
-  killShake: 0.35
+  killShake: 0.5
   focusShakePerKill: 0.25
-  shakeSpeed: 3
+  shakeSpeed: 2
   shakeSpeedPerKill: -0.2
   HasProtection: 0
   BounceAudioSource: {fileID: 82699011473447226}
@@ -345,7 +345,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 61e71fd72318a954d8c28b43fc2231bf, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -460,7 +460,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpLookExtreme: 15
+  jumpLookExtreme: 12.5
   gunRecoilCurve:
     serializedVersion: 2
     m_Curve:

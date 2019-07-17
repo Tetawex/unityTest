@@ -1317,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: 2147294138957404019, guid: 8cea1d70e9913804fbef38a5bc68475f,
         type: 3}
       propertyPath: maxCharge
-      value: 80
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cea1d70e9913804fbef38a5bc68475f, type: 3}
@@ -2070,7 +2070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4863002919990084, guid: 2f667c38f197b4b449cf457c2d844042, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.282
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 4863002919990084, guid: 2f667c38f197b4b449cf457c2d844042, type: 3}
       propertyPath: m_LocalPosition.z
