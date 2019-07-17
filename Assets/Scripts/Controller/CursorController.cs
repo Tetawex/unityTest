@@ -59,7 +59,7 @@ public class CursorController : MonoBehaviour
         if (inputVector.y != 0f)
             cursorPos.y += Mathf.Pow(Mathf.Abs(inputVector.y), movementAcc) * currentMovementMult * Mathf.Sign(inputVector.y);
         cursorPos.x = Mathf.Clamp(cursorPos.x, -canvasResolution.x / 2f, canvasResolution.x / 2f);
-        cursorPos.y = Mathf.Clamp(cursorPos.y, -canvasResolution.x / 2f, canvasResolution.y / 2f);
+        cursorPos.y = Mathf.Clamp(cursorPos.y, -canvasResolution.y / 2f, canvasResolution.y / 2f);
         rectTransform.anchoredPosition = cursorPos;
 
 
