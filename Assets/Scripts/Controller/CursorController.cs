@@ -34,11 +34,14 @@ public class CursorController : MonoBehaviour
     public bool isOverEnemy;
     private float currentFollowSpeed;
 
+    private static Vector2 lastPosition = Vector2.zero;
+
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         rectTransform = (RectTransform)transform;
+        rectTransform.anchoredPosition = lastPosition;
         parentCanvas = transform.parent.GetComponent<Canvas>();
         parentScaler = transform.parent.GetComponent<CanvasScaler>();
         currentFollowSpeed = relativeFollowSpeed;
@@ -51,7 +54,13 @@ public class CursorController : MonoBehaviour
         var cursorPos = CanvasPosition;
 
         var timeController = Utils.getSingleton<TimeController>();
-        var currentMovementMult = isOverEnemy ? (timeController.IsFocusing ? movementMultOverEnemyFocus :movementMultOverEnemy) : movementMult;
+        var currentMovementMult =
+            isOverEnemy
+            ? (
+                (timeController != null && timeController.IsFocusing)
+                ? movementMultOverEnemyFocus
+                : movementMultOverEnemy)
+            : movementMult;
 
         var inputVector = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         if (inputVector.x != 0f)
@@ -62,6 +71,7 @@ public class CursorController : MonoBehaviour
         cursorPos.y = Mathf.Clamp(cursorPos.y, -canvasResolution.y / 2f, canvasResolution.y / 2f);
         rectTransform.anchoredPosition = cursorPos;
 
+        lastPosition = rectTransform.anchoredPosition;
 
 
         //var currentPos = CanvasPosition;
