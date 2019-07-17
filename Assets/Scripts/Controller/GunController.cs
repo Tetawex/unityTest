@@ -50,7 +50,7 @@ namespace Assets.Scripts.Controller
                 currentCooldown = Cooldown;
 
             //Perform smooth turning
-            turnState += Time.deltaTime * TurnRate;
+            turnState += Time.unscaledDeltaTime * TurnRate;
             if (turnState > 1f)
                 turnState = 1f;
 

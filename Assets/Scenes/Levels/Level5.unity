@@ -1314,6 +1314,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2147294138957404019, guid: 8cea1d70e9913804fbef38a5bc68475f,
+        type: 3}
+      propertyPath: maxCharge
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cea1d70e9913804fbef38a5bc68475f, type: 3}
 --- !u!1 &507412303

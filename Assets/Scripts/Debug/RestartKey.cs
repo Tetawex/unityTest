@@ -9,6 +9,8 @@ namespace Assets.Scripts.Controller
     {
         [SerializeField]
         private KeyCode restartKey = KeyCode.R;
+        [SerializeField]
+        private KeyCode nextKey = KeyCode.N;
 
         private void Start()
         {
@@ -20,6 +22,8 @@ namespace Assets.Scripts.Controller
         {
             if (Input.GetKeyDown(restartKey))
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            else if (Input.GetKeyDown(nextKey))
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

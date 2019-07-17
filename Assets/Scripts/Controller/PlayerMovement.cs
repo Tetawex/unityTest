@@ -103,18 +103,18 @@ public class PlayerMovement : MonoBehaviour
         }
         if (EnableMovement && levelController.FightActive)
         {
+            if (direction != 0f)
+            {
+                //if (!levelController.FightActive)
+                //    playerController.Draw();
+
+                var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
+                newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
+                transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+
+            }
             if (!Utils.getSingleton<TimeController>().IsFocusing)
             {
-                if (direction != 0f)
-                {
-                    //if (!levelController.FightActive)
-                    //    playerController.Draw();
-
-                    var newX = transform.position.x + direction * moveSpeed * Time.deltaTime;
-                    newX = Mathf.Clamp(newX, xBounds.x, xBounds.y);
-                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
-
-                }
                 if (!IsJumping && Input.GetKeyDown(KeyCode.Space))
                     Jump();
             }

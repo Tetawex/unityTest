@@ -464,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a885bd150104c4bbc868254b265432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxCharge: 100
   focusMult: 0.25
   lerpTime: 0.25
   cameraZoomedFOV: 65

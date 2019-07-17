@@ -99,7 +99,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead || Utils.getSingleton<PlayerController>().Dead)
                 return;
-            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / 1.25f);
+            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / 1f);
 
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");

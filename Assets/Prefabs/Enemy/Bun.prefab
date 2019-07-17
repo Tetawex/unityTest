@@ -5151,7 +5151,7 @@ MonoBehaviour:
   drawDelayRange: {x: 0.1, y: 0.5}
   initialFireDelayRange: {x: 0.5, y: 1}
   refireDelayRange: {x: 0.5, y: 1}
-  projectilePrefab: {fileID: 1912202007536690, guid: 886178076f1771b4fa0ddc5e1964ca60,
+  projectilePrefab: {fileID: 1211580489800958, guid: 170e984dba31b184184108e18f7078f4,
     type: 3}
   fireLocation: {fileID: 4907429326124594}
   bloodSplatter: {fileID: 1881871837879234, guid: 947c79cd35314fb4da84010f07a3fe62,

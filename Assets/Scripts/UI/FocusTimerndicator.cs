@@ -26,6 +26,6 @@ public class FocusTimerndicator : MonoBehaviour
     void LateUpdate()
     {
         image.fillAmount = timeController.Charge / 100f;
-        image.color = timeController.Overdrawn ? rechargeColor : colorGradient.Evaluate(timeController.Charge / 100f);
+        image.color = timeController.Overdrawn ? rechargeColor : colorGradient.Evaluate(timeController.Charge / timeController.MaxCharge);
     }
 }

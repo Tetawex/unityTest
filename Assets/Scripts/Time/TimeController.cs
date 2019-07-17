@@ -7,6 +7,10 @@ using Assets.Scripts.Controller;
 public class TimeController : MonoBehaviour
 {
     [SerializeField]
+    private float maxCharge = 100f;
+    public float MaxCharge => maxCharge;
+
+    [SerializeField]
     private float focusMult = .5f;
     [SerializeField]
     private float lerpTime = .4f;
@@ -46,7 +50,7 @@ public class TimeController : MonoBehaviour
     public float Charge
     {
         get { return charge; }
-        set { charge = value; if (value <= 0f) overdrawn = true; else if (value >= 100f) overdrawn = false; }
+        set { charge = value; if (value <= 0f) overdrawn = true; else if (value >= maxCharge) overdrawn = false; }
     }
     private bool overdrawn;
     public bool Overdrawn => overdrawn;
@@ -58,6 +62,7 @@ public class TimeController : MonoBehaviour
         cameraOriginalFOV = mainCamera.fieldOfView;
         playerMovement = Utils.getSingleton<PlayerMovement>();
         initialDrainSpeed = drainSpeed;
+        charge = maxCharge;
     }
     
     void Update()
@@ -83,7 +88,7 @@ public class TimeController : MonoBehaviour
             drainSpeed = Mathf.MoveTowards(drainSpeed, initialDrainSpeed, drainSpeedDec * Time.unscaledDeltaTime);
 
         var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 4f;
-        Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : 100f, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
+        Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : maxCharge, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
     }
 
     public void RegisterShot(bool isHit)
@@ -95,7 +100,7 @@ public class TimeController : MonoBehaviour
         }
         else
             Charge += isHit ? normalKillDelta : 0f;
-        Charge = Mathf.Clamp(Charge, 0f, 100f);
+        Charge = Mathf.Clamp(Charge, 0f, maxCharge);
     }
 
     public bool IsFocusing => buttonPressed && Charge > 0f && playerMovement.CanFocus;
