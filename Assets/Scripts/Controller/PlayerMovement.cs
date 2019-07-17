@@ -149,13 +149,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Recoil animation
-        if (gunRecoilTimer < gunRecoilTime)
-        {
-            gunRecoilTimer += Time.deltaTime;
-            var t = gunRecoilTimer / gunRecoilTime;
-            var recoilAngleAddition = gunRecoilCurve.Evaluate(t) * gunRecoilExtreme;
-            transform.localEulerAngles += Vector3.right * -recoilAngleAddition;
-        }
+        //if (gunRecoilTimer < gunRecoilTime)
+        //{
+        //    gunRecoilTimer += Time.deltaTime;
+        //    var t = gunRecoilTimer / gunRecoilTime;
+        //    var recoilAngleAddition = gunRecoilCurve.Evaluate(t) * gunRecoilExtreme;
+        //    transform.localEulerAngles += Vector3.right * -recoilAngleAddition;
+        //}
     }
 
     public bool CanFocus => EnableMovement && levelController.FightActive && !IsJumping;

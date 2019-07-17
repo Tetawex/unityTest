@@ -971,7 +971,7 @@ MonoBehaviour:
   xShake: 0
   yShake: 0
   shakeSpeed: 45
-  shakeCoolRate: 30
+  shakeCoolRate: 20
 --- !u!1 &7017585203606361900
 GameObject:
   m_ObjectHideFlags: 0

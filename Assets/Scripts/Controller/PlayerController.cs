@@ -101,6 +101,7 @@ namespace Assets.Scripts.Controller
                     }
                     Utils.getSingleton<TimeController>().RegisterShot(didRaycastHitEnemy);
                     Utils.getSingleton<PlayerMovement>().TriggerGunRecoil();
+                    animator.SetTrigger("Fire");
                 }
 
             }
