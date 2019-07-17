@@ -16,6 +16,12 @@ namespace Assets.Scripts.Controller
         private float shootShake =.1f;
         [SerializeField]
         private float killShake = .5f;
+        [SerializeField]
+        private float focusShakePerKill;
+        [SerializeField]
+        private float shakeSpeed;
+        [SerializeField]
+        private float shakeSpeedPerKill;
 
         private GunController gunController;
         private LevelController levelController;
@@ -26,7 +32,8 @@ namespace Assets.Scripts.Controller
 
         public AudioSource BounceAudioSource;
         public AudioSource HitAudioSource;
-        
+
+        private int enemiesKilledInFocus = 0;
 
         private bool dead;
         public bool Dead
@@ -90,13 +97,20 @@ namespace Assets.Scripts.Controller
                             entity.ReceiveShot(new Shot(gunController.Damage, hit.point, transform.position));
                         }
 
-                        CameraShake.instance.setScreenShake(killShake);
+                        var timeController = Utils.getSingleton<TimeController>();
+                        if (timeController.IsFocusing)
+                            enemiesKilledInFocus++;
+                        else
+                            enemiesKilledInFocus = 0;
+                        CameraShake.instance.shakeSpeed = shakeSpeed * (shakeSpeedPerKill * (float)enemiesKilledInFocus);
+                        CameraShake.instance.setScreenShake(killShake + (focusShakePerKill * (float)enemiesKilledInFocus));
 
                         //Debug.Log(hit.point);
                         //gunController.LookAt(hit.point);
                     }
                     else
                     {
+                        CameraShake.instance.shakeSpeed = shakeSpeed;
                         CameraShake.instance.setScreenShake(shootShake);
                     }
                     Utils.getSingleton<TimeController>().RegisterShot(didRaycastHitEnemy);

@@ -29,11 +29,14 @@ namespace Assets.Scripts.Controller
         [SerializeField]
         private GameObject bounceSpark;
 
+        private float deathAnimationFocusSpeed = .4f;
+
         private Animator animator;
         private GameController gameController;
         private EnemySoundPlayer enemySoundPlayer;
 
         private bool useBrutalDeathAnimation = false;
+        private TimeController timeController;
 
         private bool dead = false;
         public bool Dead
@@ -72,12 +75,14 @@ namespace Assets.Scripts.Controller
             animator = GetComponent<Animator>();
             enemySoundPlayer = GetComponent<EnemySoundPlayer>();
             gameController = Utils.getSingleton<GameController>();
+            timeController = Utils.getSingleton<TimeController>();
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            if (dead && !timeController.IsFocusing && animator.GetFloat("DeathSpeed") == deathAnimationFocusSpeed)
+                animator.SetFloat("DeathSpeed", 1f);
         }
 
         //Starts drawing after a delay
@@ -151,7 +156,8 @@ namespace Assets.Scripts.Controller
             Dead = true;
             gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });
             //animator.Play("Idle");
-
+            if (timeController.IsFocusing)
+                animator.SetFloat("DeathSpeed", deathAnimationFocusSpeed);
             if (!useBrutalDeathAnimation)
                 animator.SetBool("Dead", true);
             else

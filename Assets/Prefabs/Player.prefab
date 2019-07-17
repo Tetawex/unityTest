@@ -325,7 +325,10 @@ MonoBehaviour:
     m_Bits: 512
   shootSphereCastWidth: 0.3
   shootShake: 0.1
-  killShake: 0.5
+  killShake: 0.35
+  focusShakePerKill: 0.25
+  shakeSpeed: 3
+  shakeSpeedPerKill: -0.2
   HasProtection: 0
   BounceAudioSource: {fileID: 82699011473447226}
   HitAudioSource: {fileID: 82254864820341362}
@@ -360,7 +363,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.5, z: 0.12}
+  m_Size: {x: 0.3, y: 0.5, z: 0.3}
   m_Center: {x: 0, y: -0.2, z: 0.06}
 --- !u!114 &114142292275106830
 MonoBehaviour:
@@ -971,7 +974,7 @@ MonoBehaviour:
   xShake: 0
   yShake: 0
   shakeSpeed: 45
-  shakeCoolRate: 20
+  shakeCoolRate: 30
 --- !u!1 &7017585203606361900
 GameObject:
   m_ObjectHideFlags: 0
