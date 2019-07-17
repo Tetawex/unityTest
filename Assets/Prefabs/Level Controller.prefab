@@ -472,8 +472,11 @@ MonoBehaviour:
   drainSpeedAcc: 7
   drainSpeedDec: 10
   drainSpeedShotDelta: 0
-  drainSpeedRechargeDelay: 0.25
+  drainSpeedRechargeDelay: 0.2
   rechargeSpeed: 20
   slowKillDelta: -15
   slowMissDelta: -20
   normalKillDelta: 15
+  shootFreezeTime: 0.025
+  shootFreezeTimeFocus: 0.2
+  shootFreezeTimeScale: 0.1

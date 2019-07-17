@@ -35,6 +35,12 @@ public class TimeController : MonoBehaviour
     private float slowMissDelta = -20f;
     [SerializeField]
     private float normalKillDelta = 30f;
+    [SerializeField]
+    private float shootFreezeTime = .025f;
+    [SerializeField]
+    private float shootFreezeTimeFocus = .1f;
+    [SerializeField]
+    private float shootFreezeTimeScale = .1f;
 
     float initialTimescale;
     Camera mainCamera;
@@ -45,6 +51,7 @@ public class TimeController : MonoBehaviour
     private PlayerMovement playerMovement;
     private float initialDrainSpeed;
     private float drainSpeedRechargeTimer = 0f;
+    private float lastShotTime = -100f;
 
     private float charge = 100f;
     public float Charge
@@ -54,6 +61,7 @@ public class TimeController : MonoBehaviour
     }
     private bool overdrawn;
     public bool Overdrawn => overdrawn;
+
 
     void Start()
     {
@@ -75,7 +83,10 @@ public class TimeController : MonoBehaviour
             buttonPressed = false;
 
         t = Mathf.MoveTowards(t, IsFocusing ? 1f : 0f, Time.unscaledDeltaTime / lerpTime);
-        Time.timeScale = Mathf.Lerp(initialTimescale, initialTimescale * focusMult, t);
+        var freezeTime = IsFocusing ? shootFreezeTimeFocus : shootFreezeTime;
+        Time.timeScale = Time.realtimeSinceStartup > lastShotTime + freezeTime
+            ? Mathf.Lerp(initialTimescale, initialTimescale * focusMult, t)
+            : shootFreezeTimeScale;
         mainCamera.fieldOfView = Mathf.Lerp(cameraOriginalFOV, cameraZoomedFOV, t);
 
         drainSpeedRechargeTimer -= Time.unscaledDeltaTime;
@@ -101,6 +112,7 @@ public class TimeController : MonoBehaviour
         else
             Charge += isHit ? normalKillDelta : 0f;
         Charge = Mathf.Clamp(Charge, 0f, maxCharge);
+        lastShotTime = Time.realtimeSinceStartup;
     }
 
     public bool IsFocusing => buttonPressed && Charge > 0f && playerMovement.CanFocus;
