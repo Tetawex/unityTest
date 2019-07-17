@@ -470,7 +470,7 @@ MonoBehaviour:
   drainSpeed: 10
   drainSpeedAcc: 5
   drainSpeedDec: 10
-  drainSpeedShotDelta: 2.5
+  drainSpeedShotDelta: 0
   drainSpeedRechargeDelay: 0.25
   rechargeSpeed: 20
   slowKillDelta: -15

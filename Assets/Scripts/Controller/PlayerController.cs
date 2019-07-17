@@ -12,6 +12,11 @@ namespace Assets.Scripts.Controller
         private LayerMask shootMask;
         [SerializeField]
         private float shootSphereCastWidth = .3f;
+        [SerializeField]
+        private float shootShake =.1f;
+        [SerializeField]
+        private float killShake = .5f;
+
         private GunController gunController;
         private LevelController levelController;
         private new Camera camera;
@@ -85,11 +90,14 @@ namespace Assets.Scripts.Controller
                             entity.ReceiveShot(new Shot(gunController.Damage, hit.point, transform.position));
                         }
 
+                        CameraShake.instance.setScreenShake(killShake);
+
                         //Debug.Log(hit.point);
                         //gunController.LookAt(hit.point);
                     }
                     else
                     {
+                        CameraShake.instance.setScreenShake(shootShake);
                     }
                     Utils.getSingleton<TimeController>().RegisterShot(didRaycastHitEnemy);
                     Utils.getSingleton<PlayerMovement>().TriggerGunRecoil();
