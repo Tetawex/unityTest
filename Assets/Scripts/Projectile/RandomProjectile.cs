@@ -28,6 +28,7 @@ namespace Assets.Scripts.Projectile
             var aimAt = player.transform.position;
             aimAt = new Vector3(MathHelper.randomRangeFromVector(shootAtBounds), player.transform.position.y,
                 player.transform.position.z - crosshairFrontDistance);
+            aimAt.y = transform.position.y;
             bullet.Direction = aimAt - transform.position;
             bullet.Multiplier = bulletSpeed;
 
