@@ -11,12 +11,12 @@ namespace Assets.Scripts.Aesthetic
         [SerializeField]
         private bool lockX = false;
 
-        PlayerMovement playerMovement;
+        //PlayerMovement playerMovement;
         PlayerController playerController;
 
         private void Start()
         {
-            playerMovement = Utils.getSingleton<PlayerMovement>();
+            //playerMovement = Utils.getSingleton<PlayerMovement>();
             playerController = Utils.getSingleton<PlayerController>();
         }
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Aesthetic
         {
             if (!playerController.Dead)
             {
-                var newRotation = playerMovement.transform.eulerAngles;
+                var newRotation = CameraShake.instance.transform.eulerAngles;
                 if (lockX)
                     newRotation.x = transform.eulerAngles.x;
                 transform.eulerAngles = newRotation;
