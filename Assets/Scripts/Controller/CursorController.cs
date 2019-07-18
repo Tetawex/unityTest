@@ -6,14 +6,15 @@ using Assets.Scripts.Util;
 
 public class CursorController : MonoBehaviour
 {
+    public static float sensitivity = 1f;
+    public static float movementAcc = 1.2f;
+
     [SerializeField]
     private float movementMult = 10f;
     [SerializeField]
     private float movementMultOverEnemy = 2f;
     [SerializeField]
     private float movementMultOverEnemyFocus = 2f;
-    [SerializeField]
-    private float movementAcc = 1.2f;
     [SerializeField]
     private float relativeFollowSpeed = .1f;
     [SerializeField]
@@ -62,13 +63,21 @@ public class CursorController : MonoBehaviour
                 : movementMultOverEnemy)
             : movementMult;
 
+        //var newSensitivity = parentScaler.referenceResolution.y / 180f;
+        //currentMovementMult *= newSensitivity;
+        currentMovementMult *= sensitivity;
+
         var inputVector = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+            inputVector /= 2f;
         if (inputVector.x != 0f)
             cursorPos.x += Mathf.Pow(Mathf.Abs(inputVector.x), movementAcc) * currentMovementMult * Mathf.Sign(inputVector.x);
         if (inputVector.y != 0f)
             cursorPos.y += Mathf.Pow(Mathf.Abs(inputVector.y), movementAcc) * currentMovementMult * Mathf.Sign(inputVector.y);
-        cursorPos.x = Mathf.Clamp(cursorPos.x, -canvasResolution.x / 2f, canvasResolution.x / 2f);
+
         cursorPos.y = Mathf.Clamp(cursorPos.y, -canvasResolution.y / 2f, canvasResolution.y / 2f);
+        var xMult = (float)Screen.width / (float)Screen.height;
+        cursorPos.x = Mathf.Clamp(cursorPos.x, -canvasResolution.y * xMult / 2f, canvasResolution.y * xMult / 2f);
         rectTransform.anchoredPosition = cursorPos;
 
         lastPosition = rectTransform.anchoredPosition;
@@ -82,6 +91,11 @@ public class CursorController : MonoBehaviour
         //CanvasPosition = currentPos;
 
         image.color = isOverEnemy ? enemyColor : normalColor;
+    }
+
+    void getRelativeMovementMult()
+    {
+
     }
 
     public Vector2 CanvasPosition

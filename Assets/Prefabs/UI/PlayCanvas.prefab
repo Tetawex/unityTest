@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementMult: 5
   movementMultOverEnemy: 3
-  movementMultOverEnemyFocus: 3
+  movementMultOverEnemyFocus: 2
   movementAcc: 1.2
   relativeFollowSpeed: 0.2
   relativeFollowSpeedEnemy: 0.08

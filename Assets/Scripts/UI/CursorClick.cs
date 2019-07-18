@@ -18,7 +18,6 @@ public class CursorClick : MonoBehaviour
         //print(currentButton);
         if (Input.GetMouseButtonDown(0) && currentButton != null && currentButton.isActiveAndEnabled && currentButton.interactable)
         {
-            print("aaa");
             currentButton.onClick.Invoke();
         }
     }
@@ -41,20 +40,17 @@ public class CursorClick : MonoBehaviour
 
     void HandleTrigger(Collider2D collision, bool inside)
     {
-        print(collision);
-        print(inside);
         var colliderButton = collision.GetComponent<Button>();
         if (colliderButton != null)
         {
             if (inside)
                 currentButton = colliderButton;
             else if (colliderButton == currentButton)
-                colliderButton = null;
+                currentButton = null;
         }
         else
         {
-            Physics2D.IgnoreCollision(col2D, collision);
+            //Physics2D.IgnoreCollision(col2D, collision);
         }
-        print(currentButton);
     }
 }
