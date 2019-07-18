@@ -479,4 +479,4 @@ MonoBehaviour:
   normalKillDelta: 15
   shootFreezeTime: 0.025
   shootFreezeTimeFocus: 0.2
-  shootFreezeTimeScale: 0.1
+  shootFreezeTimeScale: 0.07

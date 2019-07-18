@@ -152,6 +152,7 @@ namespace Assets.Scripts.Controller
                 return;
             var levelController = Utils.getSingleton<LevelController>();
             levelController.EnemiesRemaining--;
+            ShotAnimation.instance.shoot();
             CancelInvoke();
             Dead = true;
             gameObject.GetComponentsInChildren<Collider>().ToList().ForEach(collider => { collider.enabled = false; });

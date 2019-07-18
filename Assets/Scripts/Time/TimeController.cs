@@ -112,7 +112,8 @@ public class TimeController : MonoBehaviour
         else
             Charge += isHit ? normalKillDelta : 0f;
         Charge = Mathf.Clamp(Charge, 0f, maxCharge);
-        lastShotTime = Time.realtimeSinceStartup;
+        if (isHit)
+            lastShotTime = Time.realtimeSinceStartup;
     }
 
     public bool IsFocusing => buttonPressed && Charge > 0f && playerMovement.CanFocus;
