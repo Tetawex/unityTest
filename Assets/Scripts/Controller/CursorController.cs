@@ -8,6 +8,17 @@ public class CursorController : MonoBehaviour
 {
     public static float sensitivity = 1f;
     public static float movementAcc = 1.2f;
+    private static bool nativeCursor = false;
+    public static bool NativeCursor
+    {
+        get { return nativeCursor; }
+        set
+        {
+            nativeCursor = value;
+            Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+    }
+
 
     [SerializeField]
     private float movementMult = 10f;
@@ -40,7 +51,8 @@ public class CursorController : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (!nativeCursor)
+            Cursor.lockState = CursorLockMode.Locked;
         rectTransform = (RectTransform)transform;
         rectTransform.anchoredPosition = lastPosition;
         parentCanvas = transform.parent.GetComponent<Canvas>();
@@ -81,6 +93,9 @@ public class CursorController : MonoBehaviour
         rectTransform.anchoredPosition = cursorPos;
 
         lastPosition = rectTransform.anchoredPosition;
+
+        if (NativeCursor)
+            rectTransform.anchoredPosition = ScreenToCanvasPosition(Input.mousePosition);
 
 
         //var currentPos = CanvasPosition;
