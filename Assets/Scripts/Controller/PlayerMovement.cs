@@ -101,6 +101,8 @@ public class PlayerMovement : MonoBehaviour
                 initialY + jumpCurve.Evaluate(t) * jumpHeight,
                 transform.position.z);
         }
+        else
+            transform.position = new Vector3(transform.position.x, initialY, transform.position.z);
         if (EnableMovement && levelController.FightActive)
         {
             if (direction != 0f)
@@ -147,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
             var jumpAngleAddition = jumpLookCurve.Evaluate(t) * jumpLookExtreme;
             transform.localEulerAngles += Vector3.right * jumpAngleAddition;
         }
+
 
         // Recoil animation
         //if (gunRecoilTimer < gunRecoilTime)

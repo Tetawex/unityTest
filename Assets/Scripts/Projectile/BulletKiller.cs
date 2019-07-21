@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Controller;
 
 public class BulletKiller : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class BulletKiller : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Projectile"))
-            Destroy(other.gameObject);
+        {
+            other.GetComponent<ProjectileController>().harmless = true;
+        }
     }
 }

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 65615952684162750}
   - component: {fileID: 114934985590731982}
   - component: {fileID: 114363498193712998}
+  - component: {fileID: 564053432315248465}
   m_Layer: 8
   m_Name: Big Projectile
   m_TagString: Projectile
@@ -52,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  harmless: 0
 --- !u!114 &114320070244119390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +149,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockX: 0
+--- !u!114 &564053432315248465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211580489800958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461622c940dd1248af247f79718c173, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistance: 7
+  grazeSpeedAtZero: 300
 --- !u!1 &1568531952441332
 GameObject:
   m_ObjectHideFlags: 0

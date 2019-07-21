@@ -467,17 +467,18 @@ MonoBehaviour:
   maxCharge: 100
   focusMult: 0.35
   startFraction: 0.33
+  chargePerGraze: 2.5
   lerpTime: 0.25
   cameraZoomedFOV: 65
-  drainSpeed: 7
-  drainSpeedAcc: 3
+  drainSpeed: 8
+  drainSpeedAcc: 4
   drainSpeedDec: 10
   drainSpeedShotDelta: 0
   drainSpeedRechargeDelay: 0.2
   rechargeSpeed: 0
   slowKillDelta: -15
   slowMissDelta: -20
-  normalKillDelta: 15
+  normalKillDelta: 6
   shootFreezeTime: 0.025
   shootFreezeTimeFocus: 0.2
   shootFreezeTimeScale: 0.07

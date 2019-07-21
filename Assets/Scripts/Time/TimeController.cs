@@ -15,6 +15,8 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float startFraction = .33f;
     [SerializeField]
+    private float chargePerGraze = .01f;
+    [SerializeField]
     private float lerpTime = .4f;
     [SerializeField]
     private float cameraZoomedFOV = 65f;
@@ -44,6 +46,8 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float shootFreezeTimeScale = .1f;
 
+    public static float CurrentGraze = 0f;
+
     float initialTimescale;
     Camera mainCamera;
     private float cameraOriginalFOV;
@@ -59,7 +63,7 @@ public class TimeController : MonoBehaviour
     public float Charge
     {
         get { return charge; }
-        set { charge = value; if (value <= 0f) overdrawn = true; else if (value >= maxCharge) overdrawn = false; }
+        set { charge = value; if (value <= 0f) overdrawn = true; else if (value >= maxCharge) { overdrawn = false; charge = maxCharge; } }
     }
     private bool overdrawn;
     public bool Overdrawn => overdrawn;
@@ -102,6 +106,9 @@ public class TimeController : MonoBehaviour
 
         var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 0f;
         Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : maxCharge, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
+        if (!IsFocusing && !isTransitioning)
+            Charge += CurrentGraze * chargePerGraze;
+        CurrentGraze = 0f;
     }
 
     public void RegisterShot(bool isHit)

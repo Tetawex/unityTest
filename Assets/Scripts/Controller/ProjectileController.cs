@@ -7,6 +7,7 @@ namespace Assets.Scripts.Controller
     public class ProjectileController : MonoBehaviour
     {
         public EnemyController enemy;
+        public bool harmless = false;
 
         // Use this for initialization
         void Start()

@@ -143,7 +143,10 @@ namespace Assets.Scripts.Controller
 
             if (other.tag.Equals("Projectile"))
             {
-                GetShot();
+                if (!other.GetComponent<ProjectileController>().harmless)
+                    GetShot();
+                else
+                    other.GetComponent<ProjectileGraze>().enabled = false;
             }
         }
 
