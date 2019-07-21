@@ -48,7 +48,7 @@ public class TimeController : MonoBehaviour
     Camera mainCamera;
     private float cameraOriginalFOV;
     float t = 0f;
-    public bool isTransitioning => (IsFocusing && t < .5f) || (!IsFocusing && t > .5f);
+    public bool isTransitioning => (IsFocusing && t < .5f) || (!IsFocusing && t > 0f);
     private bool buttonPressed = false;
     private PlayerMovement playerMovement;
     private float initialDrainSpeed;
