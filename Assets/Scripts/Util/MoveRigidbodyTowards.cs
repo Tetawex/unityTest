@@ -35,8 +35,7 @@ namespace Assets.Scripts.Util
         // Update is called once per frame
         void Update()
         {
-            if (!Utils.getSingleton<PlayerController>().Dead)
-                rigidbody.MovePosition(transform.position + (direction.normalized * multiplier * BulletSpeedMult * Time.deltaTime));
+            rigidbody.MovePosition(transform.position + (direction.normalized * multiplier * BulletSpeedMult * Time.deltaTime));
             //rigidbody.velocity = direction * multiplier;
             //transform.position += direction * multiplier * Time.deltaTime;
         }
