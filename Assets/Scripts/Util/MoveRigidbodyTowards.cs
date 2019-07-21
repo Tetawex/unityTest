@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Controller;
+
 namespace Assets.Scripts.Util
 {
     public class MoveRigidbodyTowards : MonoBehaviour
@@ -33,7 +35,8 @@ namespace Assets.Scripts.Util
         // Update is called once per frame
         void Update()
         {
-            rigidbody.MovePosition(transform.position + (direction.normalized * multiplier * BulletSpeedMult * Time.deltaTime));
+            if (!Utils.getSingleton<PlayerController>().Dead)
+                rigidbody.MovePosition(transform.position + (direction.normalized * multiplier * BulletSpeedMult * Time.deltaTime));
             //rigidbody.velocity = direction * multiplier;
             //transform.position += direction * multiplier * Time.deltaTime;
         }
