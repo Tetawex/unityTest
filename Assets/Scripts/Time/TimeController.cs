@@ -13,6 +13,8 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private float focusMult = .5f;
     [SerializeField]
+    private float startFraction = .33f;
+    [SerializeField]
     private float lerpTime = .4f;
     [SerializeField]
     private float cameraZoomedFOV = 65f;
@@ -53,7 +55,7 @@ public class TimeController : MonoBehaviour
     private float drainSpeedRechargeTimer = 0f;
     private float lastShotTime = -100f;
 
-    private float charge = 100f;
+    private float charge = 0f;
     public float Charge
     {
         get { return charge; }
@@ -70,7 +72,7 @@ public class TimeController : MonoBehaviour
         cameraOriginalFOV = mainCamera.fieldOfView;
         playerMovement = Utils.getSingleton<PlayerMovement>();
         initialDrainSpeed = drainSpeed;
-        charge = maxCharge;
+        charge = maxCharge * startFraction;
     }
     
     void Update()
@@ -98,7 +100,7 @@ public class TimeController : MonoBehaviour
         else
             drainSpeed = Mathf.MoveTowards(drainSpeed, initialDrainSpeed, drainSpeedDec * Time.unscaledDeltaTime);
 
-        var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 4f;
+        var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 0f;
         Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : maxCharge, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
     }
 

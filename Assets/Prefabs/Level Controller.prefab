@@ -466,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCharge: 100
   focusMult: 0.35
+  startFraction: 0.33
   lerpTime: 0.25
   cameraZoomedFOV: 65
   drainSpeed: 7
@@ -473,10 +474,10 @@ MonoBehaviour:
   drainSpeedDec: 10
   drainSpeedShotDelta: 0
   drainSpeedRechargeDelay: 0.2
-  rechargeSpeed: 20
+  rechargeSpeed: 15
   slowKillDelta: -15
   slowMissDelta: -20
-  normalKillDelta: 15
+  normalKillDelta: 10
   shootFreezeTime: 0.025
   shootFreezeTimeFocus: 0.2
   shootFreezeTimeScale: 0.07
