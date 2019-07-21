@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 114226417676788200}
   - component: {fileID: 114945554026216866}
   m_Layer: 8
-  m_Name: Aimless Projectile
+  m_Name: Aimless Random Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b6a012f02f2f1844190895910d545fdc, type: 2}
+  - {fileID: 2100000, guid: 231b1b0fc85c9a148899654485bbe1d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,7 +200,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f8a47dfa00dcd7b4dafe64d1f8037662, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 114585440267519792}
   - component: {fileID: 65264111360675776}
   - component: {fileID: 114226417676788200}
-  - component: {fileID: 114085080878145610}
+  - component: {fileID: 114945554026216866}
   m_Layer: 8
-  m_Name: Random Projectile
+  m_Name: Aimless Burst Projectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 0.85, z: 0.2}
+  m_Size: {x: 0.8, y: 0.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114226417676788200
 MonoBehaviour:
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeTime: 0.2
---- !u!114 &114085080878145610
+--- !u!114 &114945554026216866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 231b1b0fc85c9a148899654485bbe1d2, type: 2}
+  - {fileID: 2100000, guid: bbffc1398c2ff3d4bb369bc0552c8edb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

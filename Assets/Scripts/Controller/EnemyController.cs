@@ -13,6 +13,7 @@ namespace Assets.Scripts.Controller
 {
     public class EnemyController : MonoBehaviour, IDrawer, IShooter, IMortalEntity, IBaseStats
     {
+        private const float bulletFireRateMult = .8f;
 
         [SerializeField]
         private Vector2 drawDelayRange;
@@ -99,7 +100,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead || Utils.getSingleton<PlayerController>().Dead)
                 return;
-            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / 1f);
+            Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / bulletFireRateMult);
 
             enemySoundPlayer.PlayShootSound();
             animator.SetTrigger("Shoot");
