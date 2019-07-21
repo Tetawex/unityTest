@@ -465,11 +465,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCharge: 100
-  focusMult: 0.25
+  focusMult: 0.35
   lerpTime: 0.25
   cameraZoomedFOV: 65
-  drainSpeed: 10
-  drainSpeedAcc: 7
+  drainSpeed: 7
+  drainSpeedAcc: 3
   drainSpeedDec: 10
   drainSpeedShotDelta: 0
   drainSpeedRechargeDelay: 0.2
