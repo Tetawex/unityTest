@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8461622c940dd1248af247f79718c173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 5
-  grazeSpeedAtZero: 400
+  maxDistance: 6
+  grazeSpeedAtZero: 4000
 --- !u!1 &1568531952441332
 GameObject:
   m_ObjectHideFlags: 0

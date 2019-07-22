@@ -467,7 +467,7 @@ MonoBehaviour:
   maxCharge: 100
   focusMult: 0.35
   startFraction: 0.33
-  chargePerGraze: 2.5
+  chargePerGraze: 4
   lerpTime: 0.25
   cameraZoomedFOV: 65
   drainSpeed: 8
