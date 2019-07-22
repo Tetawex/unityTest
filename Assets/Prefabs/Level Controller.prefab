@@ -325,6 +325,12 @@ MonoBehaviour:
   fightMusicStartDelay: 0.75
   standoffMusicStartDelay: 0.75
   enemyLandClip: {fileID: 8300000, guid: e86a402fab9c06f4bbf5e20e59179558, type: 3}
+  enemyWhistleClip: {fileID: 8300000, guid: 2edb6ae00cb9de34c8b5c31da115d448, type: 3}
+  enemyFleeIncreases:
+  - 0.35
+  - 0.25
+  - 0.15
+  fleeGoal: 1
 --- !u!82 &82352152143848436
 AudioSource:
   m_ObjectHideFlags: 0
@@ -467,9 +473,10 @@ MonoBehaviour:
   maxCharge: 100
   focusMult: 0.35
   startFraction: 0.33
-  chargePerGraze: 4
+  chargePerGraze: 5
   lerpTime: 0.25
   cameraZoomedFOV: 65
+  maxGrazeChargeSpeed: 75
   drainSpeed: 8
   drainSpeedAcc: 4
   drainSpeedDec: 10

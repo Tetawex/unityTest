@@ -32,7 +32,7 @@ public class BurstSpawner : MonoBehaviour
 	
 	void Update ()
     {
-        if (shotsFired >= shotCount || projectileController.enemy.Dead)
+        if (shotsFired >= shotCount || projectileController.enemy.Dead || !Utils.getSingleton<LevelController>().FightActive)
         {
             Destroy(gameObject);
             return;

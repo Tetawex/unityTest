@@ -20,6 +20,8 @@ public class TimeController : MonoBehaviour
     private float lerpTime = .4f;
     [SerializeField]
     private float cameraZoomedFOV = 65f;
+    [SerializeField]
+    private float maxGrazeChargeSpeed = 35f;
 
     [SerializeField]
     private float drainSpeed = 15f;
@@ -107,7 +109,7 @@ public class TimeController : MonoBehaviour
         var currentRechargeSpeed = Utils.getSingleton<LevelController>().FightActive ? rechargeSpeed : rechargeSpeed * 0f;
         Charge = Mathf.MoveTowards(Charge, IsFocusing ? 0f : maxCharge, (IsFocusing ? drainSpeed : currentRechargeSpeed) * Time.fixedDeltaTime);
         if (!IsFocusing && !isTransitioning)
-            Charge += CurrentGraze * chargePerGraze;
+            Charge += Mathf.Clamp(CurrentGraze * chargePerGraze, 0f, maxGrazeChargeSpeed * Time.deltaTime);
         CurrentGraze = 0f;
     }
 

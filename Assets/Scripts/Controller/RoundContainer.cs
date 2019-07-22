@@ -28,10 +28,10 @@ namespace Assets.Scripts.Controller
 
         void Start()
         {
-            SpawnNextRound();
+            SpawnNextRound(new List<IDrawer>());
         }
 
-        public void SpawnNextRound()
+        public void SpawnNextRound(List<IDrawer> aliveEnemies)
         {
             if (roundIndex >= 0)
                 transform.GetChild(roundIndex).name = "Dead Enemies " + roundIndex.ToString();
@@ -41,6 +41,7 @@ namespace Assets.Scripts.Controller
             newRoundParent.gameObject.SetActive(true);
             newRoundParent.name = "Enemies";
             currentEnemies = new List<IDrawer>(newRoundParent.GetComponentsInChildren<IDrawer>());
+            currentEnemies.AddRange(aliveEnemies);
 
             animator.Rebind();
             animator.SetTrigger("Fall");

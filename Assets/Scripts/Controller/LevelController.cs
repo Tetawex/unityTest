@@ -4,6 +4,7 @@ using UnityEngine;
 using Assets.Scripts.Util;
 using UnityEngine.EventSystems;
 using Assets.Scripts.Messaging;
+using System.Linq;
 
 namespace Assets.Scripts.Controller
 {
@@ -25,10 +26,17 @@ namespace Assets.Scripts.Controller
         private float standoffMusicStartDelay;
         [SerializeField]
         private AudioClip enemyLandClip;
-
+        [SerializeField]
+        private AudioClip enemyWhistleClip;
+        [SerializeField]
+        private float[] enemyFleeIncreases;
+        [SerializeField]
+        private float fleeGoal = 1f;
+        
         public delegate void RoundCompletedEventHandler(int roundNumber);
         public event RoundCompletedEventHandler RoundCompletedEvent;
         private bool musicStarted;
+        private float fleeLevel = 0f;
 
 
         public delegate void PlayerStartedActionEventHandler();
@@ -77,8 +85,12 @@ namespace Assets.Scripts.Controller
         {
             if (roundContainer.HasMoreRounds)
             {
-                roundContainer.SpawnNextRound();
+                var aliveEnemies = roundContainer.CurrentEnemies
+                    .Where(a => !((EnemyController)a).Dead)
+                    .ToList();
+                roundContainer.SpawnNextRound(aliveEnemies);
                 Invoke("StartStandoff", standoffStartTime);
+                
 
                 RoundCompletedEvent.Invoke(roundContainer.CurrentRound);
             }
@@ -122,17 +134,36 @@ namespace Assets.Scripts.Controller
                 fightMusic.UnPause();
         }
 
+        private void Update()
+        {
+            if (fightActive && !playerController.Dead && enemiesRemaining > 0 && roundContainer.HasMoreRounds)
+            {
+                int index = enemiesRemaining - 1;
+                if (index < enemyFleeIncreases.Length)
+                {
+                    fleeLevel += enemyFleeIncreases[index] * Time.deltaTime;
+                    if (fleeLevel >= fleeGoal)
+                    {
+                        EndAction();
+                        sfxSource.PlayOneShot(enemyWhistleClip);
+                    }
+                }
+            }
+        }
+
         public void EndAction()
         {
             fightActive = false;
             audioTime = fightMusic.time;
+            fleeLevel = 0f;
+
 
             if (Application.platform != RuntimePlatform.WebGLPlayer)
                 fightMusic.Pause();
             else
                 fightMusic.Stop();
 
-            enemiesRemaining = 0;
+            //enemiesRemaining = 0;
             gunController.Holster();
             playerController.CanDraw = false;
             playerMovement.EnableMovement = false;

@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 4.5
-  grazeSpeedAtZero: 9
+  grazeSpeedAtZero: 5
 --- !u!1 &1568531952441332
 GameObject:
   m_ObjectHideFlags: 0

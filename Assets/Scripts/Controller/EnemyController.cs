@@ -29,6 +29,10 @@ namespace Assets.Scripts.Controller
         private GameObject bloodSplatter;
         [SerializeField]
         private GameObject bounceSpark;
+        [SerializeField]
+        private float fleeDelay = .5f;
+        [SerializeField]
+        private float fleeSpeed = 25f;
 
         private float deathAnimationFocusSpeed = .4f;
 
@@ -38,6 +42,10 @@ namespace Assets.Scripts.Controller
 
         private bool useBrutalDeathAnimation = false;
         private TimeController timeController;
+        private LevelController levelController;
+        private bool hasStartedAttacking = false;
+        private bool isFleeing;
+        private bool fleeRight;
 
         private bool dead = false;
         public bool Dead
@@ -77,13 +85,27 @@ namespace Assets.Scripts.Controller
             enemySoundPlayer = GetComponent<EnemySoundPlayer>();
             gameController = Utils.getSingleton<GameController>();
             timeController = Utils.getSingleton<TimeController>();
+            levelController = Utils.getSingleton<LevelController>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (dead && !timeController.IsFocusing && animator.GetFloat("DeathSpeed") == deathAnimationFocusSpeed)
+            if (isFleeing)
+            {
+                fleeDelay -= Time.deltaTime;
+                if (fleeDelay < 0f)
+                    transform.position += Vector3.right * (fleeRight ? 1f : -1f);
+            }
+            else if (dead && !timeController.IsFocusing && animator.GetFloat("DeathSpeed") == deathAnimationFocusSpeed)
                 animator.SetFloat("DeathSpeed", 1f);
+            else if (hasStartedAttacking && !dead && !levelController.FightActive && !Utils.getSingleton<PlayerController>().Dead)
+            {
+                //isFleeing = true;
+                //fleeRight = MathHelper.randomBool();
+                animator.SetTrigger("Flee");
+                hasStartedAttacking = false;
+            }
         }
 
         //Starts drawing after a delay
@@ -91,6 +113,7 @@ namespace Assets.Scripts.Controller
         {
             if (Dead)
                 return;
+            hasStartedAttacking = true;
             CancelInvoke();
             Invoke("StartDrawing", MathHelper.randomRangeFromVector(drawDelayRange));
             //ExecuteEvents.Execute<IDrawShootMessageTarget>(gameController.gameObject, null, (x, y) => x.EnemyDrawed());
@@ -98,7 +121,7 @@ namespace Assets.Scripts.Controller
 
         public void Shoot()
         {
-            if (Dead || Utils.getSingleton<PlayerController>().Dead)
+            if (Dead || Utils.getSingleton<PlayerController>().Dead || !levelController.FightActive)
                 return;
             Invoke("Shoot", MathHelper.randomRangeFromVector(refireDelayRange) / bulletFireRateMult);
 
