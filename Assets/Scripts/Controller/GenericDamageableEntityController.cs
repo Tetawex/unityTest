@@ -23,7 +23,8 @@ namespace Assets.Scripts.Controller
 
             var rotation = Quaternion.LookRotation(shot.OriginPoint).eulerAngles;
             rotation.x = 0;
-            Instantiate(hitPrefab, shot.ImpactPoint, Quaternion.identity);
+            if (hitPrefab != null)
+                Instantiate(hitPrefab, shot.ImpactPoint, Quaternion.identity);
         }
 
         // Use this for initialization
